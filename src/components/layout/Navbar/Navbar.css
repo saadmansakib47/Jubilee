@@ -1,0 +1,38 @@
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 1.5rem;
+}
+
+.navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.cv-button {
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #5B2D8B, #7A4FB3);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
