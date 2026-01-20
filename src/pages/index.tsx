@@ -1,14 +1,21 @@
 import React from "react"
-import Navbar from "../components/layout/Navbar/Navbar"
-import Hero from "../components/home/Hero/Hero"
+import { Layout } from "@/components/layout/Layout"
+import { Hero } from "@/components/home/Hero/Hero"
+import { Services } from "@/components/home/Services"
+import { IntroCard } from "@/components/home/IntroCard"
+import { FeaturedTestimonials } from "@/components/home/FeaturedTestimonials"
 
-const HomePage = () => {
+const IndexPage: React.FC = () => {
     return (
-        <>
-            <Navbar />
+        <Layout>
             <Hero />
-        </>
+            <Services />
+            <IntroCard />
+            <FeaturedTestimonials />
+        </Layout>
     )
 }
 
-export default HomePage
+export default IndexPage
+
+export const Head = () => <title>Home - Virtual Chamber</title>
