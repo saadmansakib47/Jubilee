@@ -20,3 +20,28 @@ export const colors = {
         danger: "#B84C5A",
     },
 }
+export const spacing = {
+    section: "clamp(4rem, 10vw, 8rem)",
+    container: "clamp(1rem, 5vw, 2rem)",
+}
+
+export const borderRadius = {
+    sm: "0.5rem",
+    md: "1rem",
+    lg: "1.5rem",
+    xl: "2rem",
+    full: "9999px",
+}
+
+export const shadows = {
+    soft: "0 4px 24px rgba(91, 45, 139, 0.08)",
+    medium: "0 8px 40px rgba(91, 45, 139, 0.12)",
+    strong: "0 16px 56px rgba(91, 45, 139, 0.16)",
+    glow: "0 0 40px rgba(91, 45, 139, 0.3)",
+}
+
+export const transitions = {
+    fast: "150ms ease-in-out",
+    normal: "300ms ease-in-out",
+    slow: "500ms ease-in-out",
+}
