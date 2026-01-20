@@ -1,99 +1,218 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# 🌟 Virtual Chamber - Professional Psychology Practice Website
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+A modern, elegant web application for a professional psychology practice built with Gatsby, TypeScript, and Framer Motion. Features a beautiful purple-violet theme with sophisticated animations and mobile-first design.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## ✨ Features
 
-## 🚀 Quick start
+### 🎨 Design
+- **Purple-Violet Theme**: Elegant color scheme with deep and light tones
+- **Mobile-First**: Optimized for mobile browsing and appointment booking
+- **Smooth Animations**: Framer Motion powered interactions and transitions
+- **Glass Morphism**: Modern UI effects with backdrop blur
+- **Responsive**: Seamless experience across all device sizes
 
-1.  **Create a Gatsby site.**
+### 📱 User Interface
+- **Transparent Navbar**: Blends elegantly with hero section
+- **Hero Section**: Compelling landing with CTA buttons
+- **Services Showcase**: Animated service cards with icons
+- **Testimonials**: Featured client testimonials with ratings
+- **Professional Timeline**: Educational milestones and achievements
+- **Gallery**: Collage-style image display with opacity gradients
+- **Contact Form**: Integrated contact functionality
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+### 🔧 Technical Features
+- **TypeScript**: Type-safe development
+- **Gatsby**: Fast, static site generation
+- **Tailwind CSS**: Utility-first styling
+- **Framer Motion**: Professional animations
+- **React Hook Form + Zod**: Form validation
+- **React Calendar**: Appointment scheduling
+- **React Quill**: Rich text editing (admin)
+- **Lucide React**: Beautiful icon library
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+## 🚀 Getting Started
 
-1.  **Start developing.**
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-    Navigate into your new site’s directory and start it up.
+### Installation
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd virtual-chamber
+   ```
 
-1.  **Open the source code and start editing!**
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-    Your site is now running at `http://localhost:8000`!
+3. **Start development server**
+   ```bash
+   npm run develop
+   # or
+   yarn develop
+   ```
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+4. **Open your browser**
+   Navigate to `http://localhost:8000`
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### Build for Production
 
-## 🚀 Quick start (Netlify)
+```bash
+npm run build
+# or
+yarn build
+```
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+Then serve the production build:
+```bash
+npm run serve
+# or
+yarn serve
+```
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+## 📁 Project Structure
 
-## 🧐 What's inside?
+```
+src/
+├── pages/                  # Page components
+│   ├── index.tsx          # Home page
+│   ├── about.tsx          # About page
+│   ├── contact.tsx        # Contact page
+│   ├── gallery.tsx        # Gallery page
+│   ├── testimonials.tsx   # Testimonials page
+│   ├── journal/           # Journal section
+│   └── admin/             # Admin pages
+│
+├── components/
+│   ├── layout/            # Layout components
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   └── Layout.tsx
+│   ├── home/              # Home page components
+│   │   ├── Hero.tsx
+│   │   ├── Services.tsx
+│   │   ├── IntroCard.tsx
+│   │   └── FeaturedTestimonials.tsx
+│   ├── ui/                # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Timeline.tsx
+│   └── journal/           # Journal components
+│
+├── styles/
+│   ├── globals.css        # Global styles
+│   ├── theme.ts           # Theme configuration
+│   └── typography.ts      # Typography settings
+│
+├── utils/
+│   ├── constants.ts       # App constants
+│   ├── date.ts            # Date utilities
+│   └── cn.ts              # ClassNames utility
+│
+└── services/              # API services
+    ├── api.ts             # Rust backend API calls
+    └── auth.ts            # Authentication service
+```
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+## 🎨 Color Palette
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+```typescript
+Primary Deep:    #5B2D8B  // Rich violet
+Primary Light:   #E6D9F5  // Soft lavender
+Secondary Deep:  #3F1D5C  // Dark violet
+Secondary Light: #F2ECFA  // Light purple
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## 🔧 Configuration
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+### Theme Customization
+Edit `src/styles/theme.ts` to customize colors, typography, and spacing.
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+### Site Metadata
+Edit `gatsby-config.js` to update site information:
+```javascript
+siteMetadata: {
+  title: `Your Site Title`,
+  description: `Your site description`,
+  author: `@yourhandle`,
+  siteUrl: `https://yoursite.com`,
+}
+```
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+### Backend Integration
+Update `src/services/api.ts` with your Rust backend endpoints when ready.
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+## 📝 Available Scripts
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+- `npm run develop` - Start development server
+- `npm run build` - Build for production
+- `npm run serve` - Serve production build
+- `npm run clean` - Clean Gatsby cache
+- `npm run type-check` - Run TypeScript type checking
+- `npm run format` - Format code with Prettier
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## 🎯 Next Steps
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+### To Complete:
+1. **Images**: Add professional images to replace placeholders
+2. **Content**: Update all content with actual practice information
+3. **Journal Section**: Implement blog, research, case studies pages
+4. **Gallery**: Add image upload and display functionality
+5. **Contact Form**: Connect to email service or backend
+6. **Admin Panel**: Implement admin authentication and CRUD operations
+7. **Calendar**: Integrate appointment booking system
+8. **Backend**: Connect Rust backend API endpoints
+9. **Testing**: Add unit and integration tests
+10. **SEO**: Optimize meta tags and add structured data
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+### Recommended Additions:
+- Google Analytics integration
+- Cookie consent banner
+- FAQ section
+- Privacy policy and terms of service pages
+- Newsletter signup
+- Social media feed integration
+- Chat widget for instant support
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+## 🚀 Deployment
 
-## 🎓 Learning Gatsby
+### Netlify
+1. Push code to GitHub
+2. Connect repository to Netlify
+3. Set build command: `gatsby build`
+4. Set publish directory: `public`
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+### Vercel
+1. Push code to GitHub
+2. Import project in Vercel
+3. Vercel will auto-detect Gatsby configuration
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+### Traditional Hosting
+```bash
+npm run build
+# Upload contents of 'public' folder to your web host
+```
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+## 🤝 Contributing
 
-## 💫 Deploy
+This is a private project for a professional practice. For any issues or suggestions, please contact the development team.
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+## 📄 License
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
+© 2024 Virtual Chamber. All rights reserved.
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+## 💬 Support
+
+For technical support or questions:
+- Email: dev@virtualchamber.com
+- Documentation: See `/docs` folder (to be created)
+
+---
+
+**Built with** ❤️ **for better mental health care accessibility**
