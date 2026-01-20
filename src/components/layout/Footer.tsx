@@ -127,13 +127,13 @@ export const Footer: React.FC = () => {
                 <div className="border-t border-white/10 py-6">
                     <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
                         <p className="text-sm text-white/60 text-center md:text-left">
-                            © {new Date().getFullYear()} Virtual Chamber. All rights
+                            © {new Date().getFullYear()} In Quiet Hours LLC. All rights
                             reserved.
                         </p>
                         <div className="flex items-center space-x-1 text-sm text-white/60">
                             <span>Developed with</span>
                             <Heart size={14} className="text-red-400 fill-current" />
-                            <span>by Your Team</span>
+                            <span>by Saadman Sakib</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <div className="flex items-center space-x-1">
