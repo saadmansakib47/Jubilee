@@ -31,8 +31,8 @@ module.exports = {
                 },
             },
             fontFamily: {
-                display: ["Cormorant Garamond", "Georgia", "serif"],
-                body: ["Spectral", "Georgia", "serif"],
+                display: ["Outfit", "sans-serif"],
+                body: ["Inter", "sans-serif"],
                 sans: ["Inter", "system-ui", "sans-serif"],
             },
             animation: {
