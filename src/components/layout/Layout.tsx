@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import { Navbar } from "./Navbar"
-import { Footer } from "./Footer"
+import { Navbar } from "src/components/layout/Navbar/Navbar"
+import { Footer } from "src/components/layout/Footer"
 import { SITE_CONFIG } from "@/utils/constants"
 import "@/styles/globals.css"
 
