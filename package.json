@@ -27,7 +27,6 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.71.1",
     "react-quill": "^2.0.0",
-    "shadcn": "^3.7.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
@@ -42,7 +41,7 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && GATSBY_CPU_COUNT=1 gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",
