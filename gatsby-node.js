@@ -4,13 +4,7 @@ const path = require("path")
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ actions }) => {
-  const { createPage } = actions
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
-  })
+  // Page creation logic removed for deleted starter templates
 }
 
 exports.onCreateWebpackConfig = ({ actions }) => {
