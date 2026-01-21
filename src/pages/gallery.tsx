@@ -291,7 +291,7 @@ const GalleryPage: React.FC = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.1 }}
                         className="max-w-5xl w-full"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e: React.MouseEvent) => e.stopPropagation()}
                     >
                         <img
                             src={lightboxImage.url}
