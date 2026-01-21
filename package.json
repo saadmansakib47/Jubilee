@@ -27,7 +27,8 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.71.1",
     "react-quill": "^2.0.0",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.11",
