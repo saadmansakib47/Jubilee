@@ -34,7 +34,7 @@ module.exports = {
         background_color: `#5B2D8B`,
         theme_color: `#5B2D8B`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, //add icon here
+        icon: `src/images/avatar.png`, //add icon here
       },
     },
     `gatsby-plugin-sitemap`,
