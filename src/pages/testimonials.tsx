@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     {
         id: 1,
         quote:
-            "Dr. [Name] transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful for her guidance and support.",
+            "Dr. Tasmiah Nawal transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful for her guidance and support.",
         author: "Sarah Johnson",
         role: "Patient",
         location: "New York Medical Center",
@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
     {
         id: 4,
         quote:
-            "Working alongside Dr. [Name] has been an incredible experience. Her dedication to patient care and innovative treatment approaches inspire our entire team.",
+            "Working alongside Dr. Tasmiah Nawal has been an incredible experience. Her dedication to patient care and innovative treatment approaches inspire our entire team.",
         author: "Dr. James Wilson",
         role: "Colleague",
         location: "City General Hospital",

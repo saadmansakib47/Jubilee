@@ -10,7 +10,7 @@ const testimonials = [
     {
         id: 1,
         quote:
-            "Dr. [Name] transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful.",
+            "Dr. Tasmiah Nawal transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful.",
         author: "Sarah Johnson",
         role: "Patient",
         location: "New York, NY",

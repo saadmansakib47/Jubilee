@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-    name: "Dr. [Name]",
+    name: "Dr. Tasmiah Nawal",
     title: "Clinical Psychologist",
     tagline: "Dreams of life remains till the heart beats",
     description: "Professional psychology and mental health services with compassionate care",

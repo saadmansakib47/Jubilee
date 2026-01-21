@@ -40,7 +40,7 @@ export const Services: React.FC = () => {
                         className="inline-block px-4 py-2 bg-primary-light rounded-full mb-4"
                     >
                         <span className="text-sm font-medium text-primary-deep">
-                            What We Offer
+                            What I Offer
                         </span>
                     </motion.div>
 

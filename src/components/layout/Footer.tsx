@@ -131,14 +131,12 @@ export const Footer: React.FC = () => {
                             reserved.
                         </p>
                         <div className="flex items-center space-x-1 text-sm text-white/60">
-                            <span>Developed with</span>
-                            <Heart size={14} className="text-red-400 fill-current" />
-                            <span>by Saadman Sakib</span>
+                            <span>Developed by Saadman Sakib</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <div className="flex items-center space-x-1">
                                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                                <span className="text-xs text-white/60">
+                                <span className="text-sm text-white/60">
                                     All systems operational
                                 </span>
                             </div>

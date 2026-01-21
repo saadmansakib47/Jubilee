@@ -22,7 +22,7 @@ const researchPapers = [
         id: 1,
         title:
             "The Impact of Mindfulness-Based Interventions on Anxiety Disorders: A Meta-Analysis",
-        authors: ["Dr. [Name]", "Dr. Jane Smith", "Dr. Robert Johnson"],
+        authors: ["Dr. Tasmiah Nawal", "Dr. Jane Smith", "Dr. Robert Johnson"],
         journal: "Journal of Clinical Psychology",
         year: 2024,
         type: "Meta-Analysis",
@@ -38,7 +38,7 @@ const researchPapers = [
         id: 2,
         title:
             "Cognitive Behavioral Therapy vs. Traditional Talk Therapy: A Comparative Study",
-        authors: ["Dr. [Name]", "Dr. Michael Brown"],
+        authors: ["Dr. Tasmiah Nawal", "Dr. Michael Brown"],
         journal: "American Journal of Psychiatry",
         year: 2023,
         type: "Comparative Study",
@@ -53,7 +53,7 @@ const researchPapers = [
     {
         id: 3,
         title: "Telepsychology During the Pandemic: Efficacy and Patient Satisfaction",
-        authors: ["Dr. [Name]", "Dr. Sarah Williams", "Dr. David Lee"],
+        authors: ["Dr. Tasmiah Nawal", "Dr. Sarah Williams", "Dr. David Lee"],
         journal: "Psychology Today Research",
         year: 2023,
         type: "Research Article",
@@ -68,7 +68,7 @@ const researchPapers = [
     {
         id: 4,
         title: "Trauma-Informed Care: Best Practices in Clinical Settings",
-        authors: ["Dr. [Name]"],
+        authors: ["Dr. Tasmiah Nawal"],
         journal: "Trauma Psychology Quarterly",
         year: 2023,
         type: "Review Article",
@@ -83,7 +83,7 @@ const researchPapers = [
     {
         id: 5,
         title: "Sleep Disorders and Mental Health: A Longitudinal Study",
-        authors: ["Dr. [Name]", "Dr. Emily Chen", "Dr. Thomas Anderson"],
+        authors: ["Dr. Tasmiah Nawal", "Dr. Emily Chen", "Dr. Thomas Anderson"],
         journal: "Sleep Medicine Reviews",
         year: 2022,
         type: "Longitudinal Study",
