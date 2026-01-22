@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
                                     className="w-full h-full"
                                 />
                             </motion.div>
-                            <span className="font-display text-xl font-semibold text-primary-deep hidden sm:block">
+                            <span className="font-display text-xl font-semibold text-primary-deep">
                                 {SITE_CONFIG.name}
                             </span>
                         </Link>
