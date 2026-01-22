@@ -64,17 +64,6 @@ export const Hero: React.FC = () => {
                         animate="visible"
                         className="space-y-8"
                     >
-                        {/* Badge */}
-                        <motion.div
-                            variants={ANIMATION_VARIANTS.fadeIn}
-                            className="inline-flex items-center space-x-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-soft"
-                        >
-                            <Sparkles className="w-4 h-4 text-primary-deep" />
-                            <span className="text-sm font-medium text-primary-deep">
-                                Professional Psychology Services
-                            </span>
-                        </motion.div>
-
                         {/* Main Heading */}
                         <motion.div variants={ANIMATION_VARIANTS.fadeUp}>
                             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light leading-tight text-neutral-text">
