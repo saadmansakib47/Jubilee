@@ -96,12 +96,12 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
     const mainTubingPath = `
     M 100 74
     L 100 78
-    A 40 40 0 1 1 108 76
+    A 40 40 0 1 1 112 74
   `.trim();
 
     // Diaphragm position at the end of the tubing (right side, where it stops)
-    const diaphragmCx = 108;
-    const diaphragmCy = 76;
+    const diaphragmCx = 112;
+    const diaphragmCy = 74;
 
     return (
         <AnimatePresence>
