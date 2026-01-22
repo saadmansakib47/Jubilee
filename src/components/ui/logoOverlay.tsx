@@ -62,14 +62,14 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
     // Letter T lines
     const TLines = [
         { x1: 60, y1: 20, x2: 80, y2: 20 }, // Top horizontal
-        { x1: 70, y1: 20, x2: 70, y2: 55 }, // Vertical stem
+        { x1: 70, y1: 20, x2: 70, y2: 50 }, // Vertical stem
     ];
 
     // Letter N lines
     const NLines = [
-        { x1: 90, y1: 55, x2: 90, y2: 20 }, // Left vertical
-        { x1: 90, y1: 20, x2: 110, y2: 55 }, // Diagonal
-        { x1: 110, y1: 55, x2: 110, y2: 20 }, // Right vertical
+        { x1: 90, y1: 50, x2: 90, y2: 20 }, // Left vertical
+        { x1: 90, y1: 20, x2: 110, y2: 50 }, // Diagonal
+        { x1: 110, y1: 50, x2: 110, y2: 20 }, // Right vertical
     ];
 
     // Stethoscope components
