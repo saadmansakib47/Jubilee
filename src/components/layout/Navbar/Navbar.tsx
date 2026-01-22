@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
 
                         <div className="hidden lg:flex items-center space-x-4">
                             <Button variant="outline" size="md" className="rounded-[16px]">
-                                <Download className="w-3 h-3 mr-2" />
+                                <Download className="w-5 h-5 mr-2" />
                                 Download CV
                             </Button>
                         </div>
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
 
                     <div className="space-y-3 pt-6 border-t border-neutral-border">
                         <Button variant="outline" size="md" className="w-full rounded-[16px]">
-                            <Download className="w-3 h-3 mr-2" />
+                            <Download className="w-5 h-5 mr-2" />
                             Download CV
                         </Button>
                     </div>
