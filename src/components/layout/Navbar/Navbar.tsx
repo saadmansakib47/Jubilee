@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu, X, Download } from "lucide-react"
 import { Button } from "@/components/ui/Button"
-import { NAV_LINKS } from "@/utils/constants"
+import { NAV_LINKS, SITE_CONFIG } from "@/utils/constants"
 import { cn } from "@/utils/cn"
 
 export const Navbar: React.FC = () => {
@@ -46,8 +46,6 @@ export const Navbar: React.FC = () => {
                         {/* Logo */}
                         <Link to="/" className="flex items-center space-x-2 group">
                             <motion.div
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 0.6 }}
                                 className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-deep to-secondary-deep flex items-center justify-center overflow-hidden"
                             >
                                 <StaticImage
@@ -58,7 +56,7 @@ export const Navbar: React.FC = () => {
                                 />
                             </motion.div>
                             <span className="font-display text-xl font-semibold text-primary-deep hidden sm:block">
-                                Virtual Chamber
+                                {SITE_CONFIG.name}
                             </span>
                         </Link>
 
