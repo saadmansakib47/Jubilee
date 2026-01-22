@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+}
+
+@layer components {
+    .container-custom {
+        width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: clamp(1rem, 5vw, 2rem);
+        padding-right: clamp(1rem, 5vw, 2rem);
+    }
+
+    .section-spacing {
+        padding-top: clamp(4rem, 10vw, 8rem);
+        padding-bottom: clamp(4rem, 10vw, 8rem);
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-br from-primary-deep to-secondary-deep;
+    }
+
+    .shadow-soft {
+        box-shadow: 0 4px 24px rgba(91, 45, 139, 0.08);
+    }
+
+    .shadow-medium {
+        box-shadow: 0 8px 40px rgba(91, 45, 139, 0.12);
+    }
+
+    .shadow-strong {
+        box-shadow: 0 16px 56px rgba(91, 45, 139, 0.16);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
