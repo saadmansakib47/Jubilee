@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu, X, Download } from "lucide-react"
 import { Button } from "@/components/ui/Button"
@@ -47,11 +48,14 @@ export const Navbar: React.FC = () => {
                             <motion.div
                                 whileHover={{ rotate: 360 }}
                                 transition={{ duration: 0.6 }}
-                                className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-deep to-secondary-deep flex items-center justify-center"
+                                className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-deep to-secondary-deep flex items-center justify-center overflow-hidden"
                             >
-                                <span className="text-white font-display font-bold text-xl">
-                                    VC
-                                </span>
+                                <StaticImage
+                                    src="../../../images/avatar.png"
+                                    alt="Logo"
+                                    placeholder="blurred"
+                                    className="w-full h-full"
+                                />
                             </motion.div>
                             <span className="font-display text-xl font-semibold text-primary-deep hidden sm:block">
                                 Virtual Chamber
