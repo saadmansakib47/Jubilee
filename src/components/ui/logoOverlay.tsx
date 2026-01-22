@@ -16,7 +16,7 @@ const AnimatedLine = ({ x1, y1, x2, y2, delay }: LineProps) => (
         y1={y1}
         x2={x2}
         y2={y2}
-        stroke="#051e84ff"
+        stroke="#5B2D8B"
         strokeWidth={1.5}
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
@@ -35,7 +35,7 @@ interface PathProps {
 const AnimatedPath = ({ d, delay, fill = "none" }: PathProps) => (
     <motion.path
         d={d}
-        stroke="#051e84ff"
+        stroke="#5B2D8B"
         strokeWidth={1.5}
         strokeLinecap="round"
         fill={fill}
@@ -154,7 +154,7 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
                             cx={leftEarX}
                             cy={leftEarY}
                             r={2}
-                            fill="#051e84ff"
+                            fill="#5B2D8B"
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0, opacity: 0 }}
@@ -164,7 +164,7 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
                             cx={rightEarX}
                             cy={rightEarY}
                             r={2}
-                            fill="#051e84ff"
+                            fill="#5B2D8B"
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0, opacity: 0 }}
@@ -197,7 +197,7 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
                             cx={diaphragmCx}
                             cy={diaphragmCy}
                             r={5}
-                            fill="#051e84ff"
+                            fill="#5B2D8B"
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0, opacity: 0 }}
