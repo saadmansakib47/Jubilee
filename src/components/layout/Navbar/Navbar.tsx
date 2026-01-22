@@ -133,8 +133,8 @@ export const Navbar: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 pt-6 border-t border-neutral-border">
-                        <Button variant="primary" size="md" className="w-full">
-                            <Download className="w-4 h-4 mr-2" />
+                        <Button variant="outline" size="md" className="w-full rounded-[16px]">
+                            <Download className="w-3 h-3 mr-2" />
                             Download CV
                         </Button>
                     </div>
