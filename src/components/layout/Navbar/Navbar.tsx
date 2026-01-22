@@ -61,21 +61,24 @@ export const Navbar: React.FC = () => {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden lg:flex items-center space-x-1">
+                        <div className="hidden lg:flex items-center space-x-1 h-full">
                             {NAV_LINKS.map((link, index) => (
                                 <motion.div
                                     key={link.href}
                                     initial={{ opacity: 0, y: -20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
+                                    className="h-full"
                                 >
                                     <Link
                                         to={link.href}
-                                        className="px-4 py-2 text-neutral-text hover:text-primary-deep font-medium transition-colors duration-200 relative group"
+                                        className="px-4 text-neutral-text hover:text-primary-deep font-medium transition-colors duration-200 relative group h-full flex items-center"
                                         activeClassName="text-primary-deep"
                                     >
-                                        {link.label}
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-deep transition-all duration-300 group-hover:w-full" />
+                                        <span className="relative h-full flex items-center">
+                                            {link.label}
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-deep transition-all duration-500 group-hover:w-full" />
+                                        </span>
                                     </Link>
                                 </motion.div>
                             ))}
