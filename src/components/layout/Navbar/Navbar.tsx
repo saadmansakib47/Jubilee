@@ -81,10 +81,9 @@ export const Navbar: React.FC = () => {
                             ))}
                         </div>
 
-                        {/* Desktop CTA Buttons */}
                         <div className="hidden lg:flex items-center space-x-4">
-                            <Button variant="secondary" size="md">
-                                <Download className="w-4 h-4 mr-2" />
+                            <Button variant="outline" size="md" className="rounded-[16px]">
+                                <Download className="w-3 h-3 mr-2" />
                                 Download CV
                             </Button>
                         </div>
