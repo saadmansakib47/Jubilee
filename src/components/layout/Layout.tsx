@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import { Helmet } from "react-helmet"
 import { Navbar } from "@/components/layout/Navbar/Navbar"
 import { Footer } from "@/components/layout/Footer"
+import TNLogoOverlay from "@/components/ui/logoOverlay"
 import { SITE_CONFIG } from "@/utils/constants"
 import "@/styles/globals.css"
 
@@ -18,6 +19,8 @@ export const Layout: React.FC<LayoutProps> = ({
     description,
     noFooter = false,
 }) => {
+    const [showOverlay, setShowOverlay] = useState(true)
+
     const pageTitle = title
         ? `${title} | ${SITE_CONFIG.name}`
         : `${SITE_CONFIG.name} - ${SITE_CONFIG.title}`
@@ -25,7 +28,7 @@ export const Layout: React.FC<LayoutProps> = ({
     const pageDescription = description || SITE_CONFIG.description
 
     return (
-        <>
+        <div className="relative overflow-hidden">
             <Helmet>
                 <html lang="en" />
                 <title>{pageTitle}</title>
@@ -44,11 +47,13 @@ export const Layout: React.FC<LayoutProps> = ({
                 <meta name="twitter:description" content={pageDescription} />
             </Helmet>
 
+            <TNLogoOverlay onComplete={() => setShowOverlay(false)} />
+
             <div className="flex flex-col min-h-screen">
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 {!noFooter && <Footer />}
             </div>
-        </>
+        </div>
     )
 }
