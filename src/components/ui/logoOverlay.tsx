@@ -190,6 +190,7 @@ export default function TNLogoOverlay({ onComplete }: { onComplete: () => void }
                         <AnimatedPath
                             d={mainTubingPath}
                             delay={1.7}
+
                         />
 
                         {/* Diaphragm - filled violet circle at the end */}
