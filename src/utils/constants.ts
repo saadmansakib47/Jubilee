@@ -1,13 +1,13 @@
 export const SITE_CONFIG = {
     name: "Dr. Tasmiah Nawal",
-    title: "Clinical Psychologist",
+    title: "MBBS Student | Aspiring Cardiologist",
     tagline: "Dreams of life remains till the heart beats",
-    description: "Professional psychology and mental health services with compassionate care",
-    email: "contact@virtualchamber.com",
-    phone: "+1 (555) 123-4567",
-    address: "123 Medical Center, Suite 456, City, State 12345",
+    description: "Medical graduate-in-training with a strong foundation in clinical medicine and a focused interest in cardiology, dedicated to evidence-based and compassionate patient care.",
+    email: "tasmiahnawal7@gmail.com",
+    phone: "+8801711111111",
+    address: "Medical College for Women & Hospital (MCW), Plot No. 4, Road No. 9, Sector 1, Uttara, Dhaka, Bangladesh",
     social: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/tasmiah.nawal.7",
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com",
@@ -15,42 +15,50 @@ export const SITE_CONFIG = {
 }
 
 export const SERVICES = [
+
     {
         id: "telemedicine",
-        title: "Telemedicine",
-        description: "Virtual consultations from the comfort of your home",
+        title: "Telemedicine Consultation",
+        description:
+            "Secure online medical consultations for general health concerns and follow-up care.",
         icon: "Video",
     },
     {
         id: "online-booking",
         title: "Online Appointment Booking",
-        description: "Easy scheduling at your convenience",
+        description:
+            "Simple and convenient appointment scheduling for in-person or virtual consultations.",
         icon: "Calendar",
     },
     {
         id: "emergency",
-        title: "Emergency Support",
-        description: "24/7 crisis intervention available",
+        title: "Emergency Medical Guidance",
+        description:
+            "Immediate guidance for urgent symptoms with appropriate referral to emergency services when needed.",
         icon: "Phone",
     },
     {
-        id: "therapy",
-        title: "Individual Therapy",
-        description: "Personalized one-on-one sessions",
-        icon: "User",
+        id: "general-medicine",
+        title: "General Medical Consultation",
+        description:
+            "Assessment and guidance for common medical conditions with a focus on holistic patient care.",
+        icon: "Stethoscope",
     },
     {
-        id: "group",
-        title: "Group Sessions",
-        description: "Collaborative healing experiences",
-        icon: "Users",
-    },
-    {
-        id: "assessment",
-        title: "Psychological Assessment",
-        description: "Comprehensive evaluations and diagnostics",
+        id: "report-review",
+        title: "Medical Report Review",
+        description:
+            "Explanation and interpretation of laboratory reports, imaging results, and medical records.",
         icon: "ClipboardCheck",
     },
+    {
+        id: "test-recommendation",
+        title: "Diagnostic Test Recommendations",
+        description:
+            "Evidence-based recommendations for appropriate investigations and follow-up testing.",
+        icon: "FileSearch",
+    },
+
 ]
 
 export const NAV_LINKS = [

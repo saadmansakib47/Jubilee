@@ -22,16 +22,16 @@ export const Footer: React.FC = () => {
                         <div className="flex items-center space-x-2">
                             <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
                                 <span className="text-white font-display font-bold text-xl">
-                                    VC
+                                    TN
                                 </span>
                             </div>
                             <span className="font-display text-xl font-semibold">
-                                Virtual Chamber
+                                Dr. Tasmiah Nawal
                             </span>
                         </div>
                         <p className="text-white/80 text-sm leading-relaxed">
-                            Professional psychology and mental health services with
-                            compassionate, evidence-based care.
+                            Evidence-based medical care with a focus on cardiovascular health,
+                            clinical excellence, and compassionate patient treatment.
                         </p>
                         <div className="flex space-x-3">
                             {socialLinks.map((social) => (
@@ -137,7 +137,7 @@ export const Footer: React.FC = () => {
                             <div className="flex items-center space-x-1">
                                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                                 <span className="text-sm text-white/60">
-                                    All systems operational
+                                    SYSTEM STATUS : OPERATIONAL
                                 </span>
                             </div>
                         </div>

@@ -10,16 +10,16 @@ const testimonials = [
     {
         id: 1,
         quote:
-            "Dr. Tasmiah transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful.",
+            "After my consultation with Dr. Tasmiah, I felt much more confident about my treatment plan. Her clinical expertise and compassionate approach are truly reassuring.",
         author: "Sarah Johnson",
         role: "Patient",
-        location: "New York, NY",
+        location: "Uttara, Dhaka",
         rating: 5,
     },
     {
         id: 2,
         quote:
-            "As a medical student, I learned invaluable lessons during my internship. Her mentorship and clinical expertise are unparalleled.",
+            "As a medical student, I've learned invaluable clinical lessons from her. Her dedication to evidence-based practice and patient care is inspiring.",
         author: "Michael Chen",
         role: "Medical Student",
         location: "Boston Medical Center",
@@ -28,10 +28,10 @@ const testimonials = [
     {
         id: 3,
         quote:
-            "The telemedicine service made it so convenient to get help. Professional, caring, and truly effective therapy sessions.",
+            "The telemedicine service made it so convenient to get medical guidance. Professional, caring, and thorough in her assessments.",
         author: "Emily Rodriguez",
         role: "Patient",
-        location: "Los Angeles, CA",
+        location: "Houston, TX",
         rating: 5,
     },
 ]
@@ -74,7 +74,7 @@ export const FeaturedTestimonials: React.FC = () => {
                         variants={ANIMATION_VARIANTS.fadeUp}
                         className="text-xl text-neutral-muted max-w-2xl mx-auto"
                     >
-                        Real stories from real people who found healing and growth
+                        Real stories from patients who received specialized medical guidance
                     </motion.p>
                 </motion.div>
 

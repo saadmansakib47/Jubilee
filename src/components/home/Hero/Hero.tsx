@@ -111,15 +111,14 @@ export const Hero: React.FC = () => {
                             </h1>
                         </motion.div>
 
-                        {/* Subtitle */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: subtitleDelay, duration: 0.8 }}
                             className="text-xl md:text-2xl text-neutral-muted font-medium leading-relaxed max-w-2xl"
                         >
-                            Compassionate, evidence-based mental health care tailored to your
-                            unique journey towards wellness and growth.
+                            Dedicated to excellence in clinical medicine with a focused approach
+                            to cardiovascular health and compassionate patient care.
                         </motion.p>
 
                         {/* CTA Buttons */}

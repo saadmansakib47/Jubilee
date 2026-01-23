@@ -55,10 +55,10 @@ export const IntroCard: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="font-semibold text-neutral-text">
-                                            10+ Years
+                                            Clinical
                                         </p>
                                         <p className="text-sm text-neutral-muted">
-                                            Clinical Experience
+                                            Focused Excellence
                                         </p>
                                     </div>
                                 </div>
@@ -93,24 +93,24 @@ export const IntroCard: React.FC = () => {
 
                         {/* Description */}
                         <p className="text-lg text-neutral-muted leading-relaxed">
-                            With over a decade of experience in clinical psychology, I am
-                            dedicated to providing compassionate, evidence-based care to help
-                            individuals navigate life's challenges and achieve mental
-                            wellness. My approach combines therapeutic expertise with genuine
-                            understanding and support.
+                            With a strong clinical foundation from Medical College for Women (MCW),
+                            I am dedicated to providing evidence-based medical care. My
+                            journey is driven by a passion for cardiology and a commitment to
+                            compassionate, patient-centered practice. I aim to deliver
+                            high-quality healthcare through continuous learning and clinical excellence.
                         </p>
 
                         {/* Specializations */}
                         <div className="space-y-3">
                             <h3 className="font-display text-xl font-semibold text-neutral-text">
-                                Areas of Expertise
+                                Clinical Interests
                             </h3>
                             <div className="grid grid-cols-2 gap-3">
                                 {[
-                                    "Cognitive Behavioral Therapy",
-                                    "Trauma & PTSD",
-                                    "Anxiety & Depression",
-                                    "Relationship Counseling",
+                                    "General Medicine",
+                                    "Cardiovascular Health",
+                                    "Evidence-Based Practice",
+                                    "Clinical Diagnostics",
                                 ].map((item, index) => (
                                     <motion.div
                                         key={item}

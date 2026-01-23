@@ -4,9 +4,10 @@ import {
     Video,
     Calendar,
     Phone,
-    User,
-    Users,
+    Stethoscope,
     ClipboardCheck,
+    FileSearch,
+    HelpCircle,
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/Card"
 import { SERVICES, ANIMATION_VARIANTS } from "@/utils/constants"
@@ -15,9 +16,9 @@ const iconMap: Record<string, React.ElementType> = {
     Video,
     Calendar,
     Phone,
-    User,
-    Users,
+    Stethoscope,
     ClipboardCheck,
+    FileSearch,
 }
 
 export const Services: React.FC = () => {
@@ -57,7 +58,7 @@ export const Services: React.FC = () => {
                         variants={ANIMATION_VARIANTS.fadeUp}
                         className="text-xl text-neutral-muted max-w-2xl mx-auto"
                     >
-                        Comprehensive mental health care designed around your needs
+                        Professional medical services and clinical care tailored to your health
                     </motion.p>
                 </motion.div>
 
@@ -70,7 +71,7 @@ export const Services: React.FC = () => {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {SERVICES.map((service, index) => {
-                        const Icon = iconMap[service.icon]
+                        const Icon = iconMap[service.icon] || HelpCircle
 
                         return (
                             <motion.div

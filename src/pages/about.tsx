@@ -110,42 +110,43 @@ const AboutPage: React.FC = () => {
                             className="space-y-6"
                         >
                             <h2 className="font-display text-4xl font-semibold text-neutral-text">
-                                My Journey in Mental Health
+                                My Journey in Medicine
                             </h2>
 
                             <div className="space-y-4 text-lg text-neutral-muted leading-relaxed">
                                 <p>
-                                    My passion for psychology began during my medical studies at
-                                    Dhaka Medical College, where I witnessed firsthand the
-                                    profound impact of mental health on overall well-being. This
-                                    inspired me to dedicate my career to helping individuals
-                                    navigate their mental health challenges.
+                                    My journey in medicine began with a strong academic foundation at
+                                    Viqarunnisa Noon School & College, followed by formal medical training
+                                    at the Medical College for Women (MCW), Uttara. During my MBBS studies,
+                                    I developed a deep appreciation for patient-centered care and
+                                    evidence-based clinical practice.
                                 </p>
 
                                 <p>
-                                    After completing my MBBS with distinction, I pursued
-                                    specialized training in clinical psychology and psychiatry
-                                    through the FCPS program. This rigorous training equipped me
-                                    with both the theoretical knowledge and practical skills
-                                    necessary to provide comprehensive mental health care.
+                                    Throughout my undergraduate medical education, clinical rotations
+                                    across major disciplines provided early exposure to cardiovascular
+                                    medicine. The complexity, precision, and life-saving impact of
+                                    cardiology gradually shaped my professional interest and long-term
+                                    career goals.
                                 </p>
 
                                 <p>
-                                    Throughout my career, I've had the privilege of working with
-                                    diverse populations, addressing issues ranging from anxiety
-                                    and depression to complex trauma and relationship challenges.
-                                    Each client's unique story has enriched my understanding and
-                                    refined my therapeutic approach.
+                                    After completing the MBBS program, I plan to pursue postgraduate
+                                    specialization through the FCPS program in Cardiology at Dhaka Medical
+                                    College. This training path reflects my commitment to developing
+                                    advanced clinical expertise in the diagnosis and management of
+                                    cardiovascular diseases.
                                 </p>
 
                                 <p>
-                                    Today, through Virtual Chamber, I combine traditional
-                                    therapeutic methods with modern telepsychology to make mental
-                                    health care more accessible and convenient for everyone who
-                                    needs it.
+                                    My professional focus is centered on continuous learning, ethical
+                                    medical practice, and delivering compassionate, high-quality care.
+                                    Through structured training and clinical experience, I aim to
+                                    contribute meaningfully to cardiovascular health and patient outcomes.
                                 </p>
                             </div>
                         </motion.div>
+
                     </div>
                 </div>
             </section>
@@ -235,12 +236,14 @@ const AboutPage: React.FC = () => {
                         className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
                     >
                         {[
-                            "Bangladesh Medical & Dental Council (BMDC)",
-                            "Bangladesh Association of Psychiatrists",
-                            "American Psychological Association (APA)",
-                            "International Society for Traumatic Stress Studies",
-                            "Association for Behavioral and Cognitive Therapies",
-                            "Telepsychology Best Practices Certification",
+                            "Bangladesh Medical & Dental Council (BMDC) Registration – 2027",
+                            "National Biology Olympiad (School Level) – Participation Certificate – 2018",
+                            "National Chemistry Olympiad (School Level) – Participation Certificate – 2019",
+                            "Voluntary Medical Service Certificate – Community Health Camps (MBBS) – 2024",
+                            "Basic Life Support (BLS) Certification – 2025",
+                            "Advanced Cardiovascular Life Support (ACLS) – Introductory Training – 2026",
+                            "ECG Interpretation & Basic Cardiology Workshop – 2026",
+                            "Clinical Skills in General Medicine Workshop – 2025",
                         ].map((cert, index) => (
                             <motion.div
                                 key={cert}
@@ -261,4 +264,4 @@ const AboutPage: React.FC = () => {
 
 export default AboutPage
 
-export const Head = () => <title>About Me - Virtual Chamber</title>
+export const Head = () => <title>About Me - Dr. Tasmiah Nawal</title>
