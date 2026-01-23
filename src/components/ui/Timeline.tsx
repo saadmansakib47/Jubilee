@@ -148,61 +148,60 @@ export const EducationTimeline: React.FC = () => {
     const educationData: TimelineItem[] = [
         {
             id: "1",
-            year: "2015-2020",
-            title: "MBBS (Bachelor of Medicine, Bachelor of Surgery)",
-            institution: "Dhaka Medical College",
+            year: "2017-2019",
+            title: "Secondary School Certificate (SSC)",
+            institution: "Viqarunnisa Noon School & College",
             description:
-                "Completed comprehensive medical education with distinction, focusing on psychiatry and mental health during clinical rotations.",
-            icon: "GraduationCap",
+                "Completed secondary education with a strong academic foundation in science subjects, demonstrating early interest in medical studies.",
+            icon: "BookOpen",
             achievements: [
-                "First Class with Honors",
-                "Best Research Paper Award in Psychiatry",
-                "President of Medical Students Association",
+                "Science background",
+                "Consistent academic performance",
             ],
         },
         {
             id: "2",
-            year: "2021-2024",
-            title: "FCPS (Fellowship of College of Physicians and Surgeons)",
-            institution: "Bangladesh College of Physicians and Surgeons",
+            year: "2019-2021",
+            title: "Higher Secondary Certificate (HSC)",
+            institution: "Viqarunnisa Noon School & College",
             description:
-                "Specialized training in clinical psychology and psychiatry with emphasis on cognitive behavioral therapy and trauma-informed care.",
-            icon: "Award",
+                "Completed higher secondary education in the science stream, preparing for competitive medical admission examinations.",
+            icon: "GraduationCap",
             achievements: [
-                "Completed 100+ supervised clinical hours",
-                "Published 3 research papers in peer-reviewed journals",
-                "Advanced training in CBT and DBT methodologies",
+                "Science stream (Biology focus)",
+                "Medical admission preparation",
             ],
         },
         {
             id: "3",
-            year: "2024",
-            title: "Advanced Certification in Trauma Therapy",
-            institution: "International Trauma Studies Program",
+            year: "2023-2027",
+            title: "MBBS (Bachelor of Medicine, Bachelor of Surgery)",
+            institution: "Medical College for Women (MCW), Uttara",
             description:
-                "Intensive certification program focused on evidence-based trauma treatment modalities and crisis intervention techniques.",
-            icon: "BookOpen",
+                "Undergoing comprehensive medical training covering foundational sciences, clinical rotations, and patient-centered care across major medical disciplines.",
+            icon: "GraduationCap",
             achievements: [
-                "EMDR Therapy Certification",
-                "Somatic Experiencing Practitioner",
-                "Crisis Intervention Specialist",
+                "Core clinical rotations completed",
+                "Hands-on hospital training",
+                "Focused interest in cardiology",
             ],
         },
         {
             id: "4",
-            year: "2024-Present",
-            title: "Clinical Psychologist in Private Practice",
-            institution: "Virtual Chamber - Private Practice",
+            year: "2029-Present",
+            title: "FCPS (Cardiology)",
+            institution: "Dhaka Medical College",
             description:
-                "Providing comprehensive mental health services including individual therapy, couples counseling, and telepsychology services.",
-            icon: "Briefcase",
+                "Pursuing advanced postgraduate training in cardiology with emphasis on clinical cardiology, diagnostics, and evidence-based cardiovascular care.",
+            icon: "Award",
             achievements: [
-                "500+ successful client sessions",
-                "95% client satisfaction rate",
-                "Developing innovative teletherapy programs",
+                "Postgraduate residency training",
+                "Advanced cardiac diagnostics exposure",
+                "Clinical research involvement (ongoing)",
             ],
         },
     ]
+
 
     return (
         <section className="section-spacing">

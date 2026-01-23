@@ -34,6 +34,7 @@ module.exports = {
                 display: ["Outfit", "sans-serif"],
                 body: ["Inter", "sans-serif"],
                 sans: ["Inter", "system-ui", "sans-serif"],
+                poppins: ["Poppins", "sans-serif"],
             },
             animation: {
                 "fade-in": "fadeIn 0.6s ease-out",

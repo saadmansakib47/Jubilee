@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
                                 >
                                     <Link
                                         to={link.href}
-                                        className="px-4 text-neutral-text hover:text-primary-deep font-medium transition-colors duration-200 relative group h-full flex items-center"
+                                        className="px-4 text-neutral-text hover:text-primary-deep font-poppins font-medium uppercase tracking-wider text-sm transition-colors duration-200 relative group h-full flex items-center"
                                         activeClassName="text-primary-deep"
                                     >
                                         <span className="relative h-full flex items-center">
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
                         </div>
 
                         <div className="hidden lg:flex items-center space-x-4">
-                            <Button variant="outline" size="md" className="rounded-[16px]">
+                            <Button variant="outline" size="md" className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm">
                                 <Download className="w-5 h-5 mr-2" />
                                 Download CV
                             </Button>
@@ -125,7 +125,7 @@ export const Navbar: React.FC = () => {
                             >
                                 <Link
                                     to={link.href}
-                                    className="block px-4 py-3 text-lg font-medium text-neutral-text hover:text-primary-deep hover:bg-primary-light rounded-lg transition-all"
+                                    className="block px-4 py-3 text-lg font-poppins font-medium uppercase tracking-wide text-neutral-text hover:text-primary-deep hover:bg-primary-light rounded-lg transition-all"
                                     activeClassName="text-primary-deep bg-primary-light"
                                     onClick={() => setIsOpen(false)}
                                 >
@@ -136,7 +136,7 @@ export const Navbar: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 pt-6 border-t border-neutral-border">
-                        <Button variant="outline" size="md" className="w-full rounded-[16px]">
+                        <Button variant="outline" size="md" className="w-full rounded-[16px] font-poppins font-medium uppercase tracking-wide">
                             <Download className="w-5 h-5 mr-2" />
                             Download CV
                         </Button>

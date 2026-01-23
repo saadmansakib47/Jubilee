@@ -19,7 +19,14 @@ export const Layout: React.FC<LayoutProps> = ({
     description,
     noFooter = false,
 }) => {
-    const [showOverlay, setShowOverlay] = useState(true)
+    const [showOverlay, setShowOverlay] = useState(false)
+
+    React.useEffect(() => {
+        const isHome = window.location.pathname === "/"
+        if (isHome) {
+            setShowOverlay(true)
+        }
+    }, [])
 
     const pageTitle = title
         ? `${title} | ${SITE_CONFIG.name}`
@@ -47,7 +54,7 @@ export const Layout: React.FC<LayoutProps> = ({
                 <meta name="twitter:description" content={pageDescription} />
             </Helmet>
 
-            <TNLogoOverlay onComplete={() => setShowOverlay(false)} />
+            {showOverlay && <TNLogoOverlay onComplete={() => setShowOverlay(false)} />}
 
             <div className="flex flex-col min-h-screen">
                 <Navbar />
