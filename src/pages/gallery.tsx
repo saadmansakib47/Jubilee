@@ -5,63 +5,81 @@ import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 
-// Dummy gallery images - replace with actual data
+import groupStudyImg from "../images/group-study.png"
+import conferenceImg from "../images/conference.jpg"
+import seminarImg from "../images/seminar.png"
+import discussionImg from "../images/discussion.png"
+import patientsImg from "../images/patients.png"
+import cardiologyImg from "../images/cardiology.png"
+import classroomImg from "../images/classroom setting.png"
+import teamworkImg from "../images/teamwork.png"
+import eventImg from "../images/event.png"
+
 const galleryImages = [
     {
         id: 1,
-        url: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800",
-        title: "Peaceful Consultation Room",
-        category: "Office",
+        // Medical student group studying together
+        url: groupStudyImg,
+        title: "Medical Students in Study Session",
+        category: "College",
     },
     {
         id: 2,
-        url: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=800",
-        title: "Comfortable Waiting Area",
-        category: "Office",
+        // Doctors at medical seminar / conference
+        url: conferenceImg,
+        title: "Medical Conference Discussion",
+        category: "Conference",
     },
     {
         id: 3,
-        url: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800",
-        title: "Therapy Session",
-        category: "Sessions",
+        // Lecture / seminar environment
+        url: seminarImg,
+        title: "Seminar Presentation at Medical College",
+        category: "Conference",
     },
     {
         id: 4,
-        url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800",
-        title: "Professional Team",
-        category: "Team",
+        // Students and instructor in academic setting
+        url: discussionImg,
+        title: "Hands-on Clinical Discussion",
+        category: "Clinical",
     },
     {
         id: 5,
-        url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800",
-        title: "Client Success Story",
-        category: "Testimonials",
+        // Patient interacting positively with clinician
+        url: patientsImg,
+        title: "Patient Consultation and Care",
+        category: "Clinical",
     },
     {
         id: 6,
-        url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800",
-        title: "Wellness Workshop",
-        category: "Events",
+        // Heart image or medical research concept
+        url: cardiologyImg,
+        title: "Cardiology Research & Focus",
+        category: "Research",
     },
     {
         id: 7,
-        url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800",
-        title: "Mindfulness Session",
-        category: "Sessions",
+        // Medical students in classroom setting
+        url: classroomImg,
+        title: "Classroom Education for Medical Students",
+        category: "College",
     },
     {
         id: 8,
-        url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800",
-        title: "Group Therapy",
-        category: "Sessions",
+        // Clinical teamwork, discussion case
+        url: teamworkImg,
+        title: "Clinical Case Discussion",
+        category: "Research",
     },
     {
         id: 9,
-        url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800",
-        title: "Individual Counseling",
-        category: "Sessions",
+        // Seminar crowd / event
+        url: eventImg,
+        title: "Medical Event & Seminar",
+        category: "Conference",
     },
-]
+];
 
 interface GalleryImageProps {
     image: typeof galleryImages[0]
@@ -133,7 +151,7 @@ const GalleryPage: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState("All")
     const [lightboxImage, setLightboxImage] = useState<typeof galleryImages[0] | null>(null)
 
-    const categories = ["All", "Office", "Sessions", "Events", "Team", "Testimonials"]
+    const categories = ["All", "College", "Conference", "Clinical", "Research"]
 
     const filteredImages =
         selectedCategory === "All"
@@ -321,8 +339,8 @@ const GalleryPage: React.FC = () => {
                         className="grid grid-cols-2 md:grid-cols-4 gap-8"
                     >
                         {[
-                            { value: "500+", label: "Happy Moments" },
-                            { value: "50+", label: "Events Hosted" },
+                            { value: "50+", label: "Happy Moments" },
+                            { value: "20+", label: "Conference Attended" },
                             { value: "10+", label: "Years of Service" },
                             { value: "100%", label: "Client Satisfaction" },
                         ].map((stat, index) => (
