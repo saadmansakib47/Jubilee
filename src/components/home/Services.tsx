@@ -49,9 +49,9 @@ export const Services: React.FC = () => {
                         variants={ANIMATION_VARIANTS.fadeUp}
                         className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-text mb-6"
                     >
-                        Special Services For
+                        Clinical Services
                         <br />
-                        <span className="text-gradient">My Patients</span>
+                        <span className="text-gradient">and Patient Care</span>
                     </motion.h2>
 
                     <motion.p

@@ -1,6 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { Award, Heart, Users, TrendingUp } from "lucide-react"
+import { StaticImage } from "gatsby-plugin-image"
 import { Layout } from "@/components/layout/Layout"
 import { EducationTimeline } from "@/components/ui/Timeline"
 import { Card } from "@/components/ui/Card"
@@ -24,7 +25,7 @@ const AboutPage: React.FC = () => {
             icon: Users,
             title: "Collaborative Care",
             description:
-                "Working together with clients as partners in their journey towards mental wellness.",
+                "Working together with patients as partners in their journey towards wellness.",
         },
         {
             icon: TrendingUp,
@@ -65,8 +66,7 @@ const AboutPage: React.FC = () => {
                             variants={ANIMATION_VARIANTS.fadeUp}
                             className="text-xl md:text-2xl text-neutral-muted leading-relaxed"
                         >
-                            Dedicated to providing compassionate, evidence-based mental health
-                            care that empowers individuals to thrive.
+                            Dedicated to providing compassionate, evidence-based medical care that empowers individuals to thrive.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -85,16 +85,13 @@ const AboutPage: React.FC = () => {
                             className="relative"
                         >
                             <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-strong bg-gradient-to-br from-primary-light to-secondary-light">
-                                <div className="w-full h-full flex items-center justify-center">
-                                    <div className="text-center p-8">
-                                        <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
-                                            <Award className="w-16 h-16 text-primary-deep" />
-                                        </div>
-                                        <p className="text-primary-deep font-display text-xl">
-                                            Professional Portrait
-                                        </p>
-                                    </div>
-                                </div>
+                                <StaticImage
+                                    src="../images/professional portrait.png"
+                                    alt="Dr. Tasmiah Nawal"
+                                    placeholder="blurred"
+                                    className="w-full h-full"
+                                    imgStyle={{ objectFit: 'cover' }}
+                                />
                             </div>
 
                             {/* Decorative element */}
