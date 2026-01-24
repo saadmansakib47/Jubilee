@@ -11,7 +11,7 @@ interface Testimonial {
     id: number
     quote: string
     author: string
-    role: "Patient" | "Student" | "Teacher" | "Colleague"
+    role: "Patient" | "Student" | "Teacher" | "Colleague" | "Classmate"
     location: string
     rating: number
     date: string
@@ -19,107 +19,89 @@ interface Testimonial {
 }
 
 // Dummy testimonials data
-const testimonials: Testimonial[] = [
-    {
-        id: 1,
-        quote:
-            "Dr. Tasmiah Nawal transformed my life. Her compassionate approach and deep understanding helped me navigate through my darkest times. I'm forever grateful for her guidance and support.",
-        author: "Sarah Johnson",
-        role: "Patient",
-        location: "New York Medical Center",
-        rating: 5,
-        date: "2024-01-15",
-        featured: true,
-    },
-    {
-        id: 2,
-        quote:
-            "As a medical student, I learned invaluable lessons during my internship. Her mentorship and clinical expertise are unparalleled. She truly embodies what it means to be a compassionate healer.",
-        author: "Michael Chen",
-        role: "Student",
-        location: "Boston Medical School",
-        rating: 5,
-        date: "2024-01-10",
-        featured: true,
-    },
-    {
-        id: 3,
-        quote:
-            "The telemedicine service made it so convenient to get help. Professional, caring, and truly effective therapy sessions that fit into my busy schedule.",
-        author: "Emily Rodriguez",
-        role: "Patient",
-        location: "Los Angeles, CA",
-        rating: 5,
-        date: "2024-01-05",
-        featured: true,
-    },
-    {
-        id: 4,
-        quote:
-            "Working alongside Dr. Tasmiah Nawal has been an incredible experience. Her dedication to patient care and innovative treatment approaches inspire our entire team.",
-        author: "Dr. James Wilson",
-        role: "Colleague",
-        location: "City General Hospital",
-        rating: 5,
-        date: "2023-12-20",
-        featured: false,
-    },
-    {
-        id: 5,
-        quote:
-            "The group therapy sessions created a safe space where I finally felt understood. The progress I've made in just a few months is remarkable.",
-        author: "Amanda Foster",
-        role: "Patient",
-        location: "Seattle, WA",
-        rating: 5,
-        date: "2023-12-15",
-        featured: false,
-    },
-    {
-        id: 6,
-        quote:
-            "As an educator, I've had the privilege of observing her teaching methods. She has a unique ability to make complex psychological concepts accessible and engaging.",
-        author: "Prof. David Martinez",
-        role: "Teacher",
-        location: "University of Psychology",
-        rating: 5,
-        date: "2023-12-10",
-        featured: false,
-    },
-    {
-        id: 7,
-        quote:
-            "My anxiety was overwhelming, but through her evidence-based approach and genuine care, I've learned to manage it effectively. Life-changing experience.",
-        author: "Jennifer Lee",
-        role: "Patient",
-        location: "Chicago, IL",
-        rating: 5,
-        date: "2023-12-01",
-        featured: false,
-    },
-    {
-        id: 8,
-        quote:
-            "The couples counseling saved our marriage. Her ability to create a non-judgmental space helped us communicate better than we ever had.",
-        author: "Robert & Maria Thompson",
-        role: "Patient",
-        location: "Miami, FL",
-        rating: 5,
-        date: "2023-11-25",
-        featured: false,
-    },
-    {
-        id: 9,
-        quote:
-            "Exceptional professional development workshops. Her insights into trauma-informed care have transformed my practice.",
-        author: "Dr. Lisa Anderson",
-        role: "Colleague",
-        location: "Regional Therapy Center",
-        rating: 5,
-        date: "2023-11-20",
-        featured: false,
-    },
-]
+const testimonials: Testimonial[] =
+    [
+        {
+            id: 1,
+            quote:
+                "Dr. Tasmiah listened carefully to my symptoms and explained the condition clearly. Her diagnosis and medicine recommendations were precise, and my health improved steadily under her guidance.",
+            author: "Md. Anisur Rahman",
+            role: "Patient",
+            location: "Dhaka",
+            rating: 5,
+            date: "2024-02-10",
+            featured: true,
+        },
+        {
+            id: 2,
+            quote:
+                "She is one of the most supportive classmates I have worked with. Always willing to help during ward rounds and study sessions, with a calm and practical approach to problem-solving.",
+            author: "Nusrat Jahan",
+            role: "Classmate",
+            location: "Medical College for Women, Uttara",
+            rating: 5,
+            date: "2024-01-28",
+            featured: true,
+        },
+        {
+            id: 3,
+            quote:
+                "The online consultation was very convenient. She reviewed my reports thoroughly and guided me on the next steps in a clear and reassuring manner.",
+            author: "Shahriar Kabir",
+            role: "Patient",
+            location: "Chattogram",
+            rating: 5,
+            date: "2024-01-18",
+            featured: true,
+        },
+        {
+            id: 4,
+            quote:
+                "Tasmiah demonstrates strong clinical curiosity and attentiveness during her training. She is disciplined, respectful, and consistently eager to learn from clinical cases.",
+            author: "Prof. Dr. Farhana Islam",
+            role: "Teacher",
+            location: "Medical College for Women, Uttara",
+            rating: 5,
+            date: "2024-12-22",
+            featured: false,
+        },
+        {
+            id: 5,
+            quote:
+                "Her ability to interpret investigation reports and correlate them clinically is commendable at this stage of training. She approaches patients with empathy and professionalism.",
+            author: "Dr. Mahmudul Hasan",
+            role: "Teacher",
+            location: "MCW Hospital, Dhaka",
+            rating: 5,
+            date: "2024-12-12",
+            featured: false,
+        },
+        {
+            id: 6,
+            quote:
+                "Working with her during community medical camps was a positive experience. She communicates well with patients and collaborates effectively with the healthcare team.",
+            author: "Dr. Samira Rahman",
+            role: "Colleague",
+            location: "Community Health Program, Dhaka",
+            rating: 5,
+            date: "2025-11-30",
+            featured: false,
+        },
+        {
+            id: 7,
+            quote:
+                "She has a sincere attitude toward patient care and pays close attention to clinical details. Her interest in cardiology is evident in her discussions and case analysis.",
+            author: "Dr. Md. Rezaul Karim",
+            role: "Teacher",
+            location: "Dhaka",
+            rating: 5,
+            date: "2024-11-18",
+            featured: false,
+        },
+    ]
+
+
+
 
 interface TestimonialCardProps {
     testimonial: Testimonial

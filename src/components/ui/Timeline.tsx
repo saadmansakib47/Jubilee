@@ -28,7 +28,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
     return (
         <div className="relative">
             {/* Vertical Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-deep via-secondary-deep to-primary-light" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 bg-gradient-to-b from-primary-deep/0 via-primary-deep to-primary-deep/0 opacity-30" />
 
             {/* Timeline Items */}
             <div className="space-y-12">
@@ -53,7 +53,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
                                     }`}
                             >
                                 <div
-                                    className={`bg-white rounded-2xl shadow-soft p-6 hover:shadow-medium transition-shadow duration-300 ${isEven ? "ml-12 md:ml-0" : "ml-12 md:ml-0"
+                                    className={`bg-white rounded-2xl shadow-soft p-6 hover:shadow-medium transition-shadow duration-300 ${isEven ? "ml-16 md:ml-0" : "ml-16 md:ml-0"
                                         }`}
                                 >
                                     {/* Year Badge */}
@@ -106,7 +106,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
                             {/* Center Icon */}
                             <motion.div
                                 variants={ANIMATION_VARIANTS.fadeIn}
-                                className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center"
+                                className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center pt-8 md:pt-0"
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.1, rotate: 5 }}
@@ -222,8 +222,8 @@ export const EducationTimeline: React.FC = () => {
                         Education & <span className="text-gradient">Experience</span>
                     </h2>
                     <p className="text-xl text-neutral-muted max-w-2xl mx-auto">
-                        A commitment to continuous learning and excellence in mental health
-                        care
+                        A commitment to clinical excellence and continuous learning in
+                        medicine and cardiovascular health
                     </p>
                 </motion.div>
 

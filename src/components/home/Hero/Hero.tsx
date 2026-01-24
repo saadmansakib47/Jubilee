@@ -117,8 +117,8 @@ export const Hero: React.FC = () => {
                             transition={{ delay: subtitleDelay, duration: 0.8 }}
                             className="text-xl md:text-2xl text-neutral-muted font-medium leading-relaxed max-w-2xl"
                         >
-                            Dedicated to excellence in clinical medicine with a focused approach
-                            to cardiovascular health and compassionate patient care.
+                            This is Dr. Tasmiah — Committed to evidence-based medicine, cardiovascular health,
+                            and patient-centered care.
                         </motion.p>
 
                         {/* CTA Buttons */}

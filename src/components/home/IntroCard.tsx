@@ -1,6 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { Mail, MapPin, Phone, Award } from "lucide-react"
+import { StaticImage } from "gatsby-plugin-image"
 import { Card } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { SITE_CONFIG, ANIMATION_VARIANTS } from "@/utils/constants"
@@ -23,18 +24,14 @@ export const IntroCard: React.FC = () => {
                     >
                         <div className="relative z-10">
                             {/* Main Image Container */}
-                            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-strong bg-gradient-to-br from-primary-light to-secondary-light">
-                                {/* Placeholder for doctor's image */}
-                                <div className="w-full h-full flex items-center justify-center">
-                                    <div className="text-center p-8">
-                                        <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
-                                            <Award className="w-16 h-16 text-primary-deep" />
-                                        </div>
-                                        <p className="text-primary-deep font-display text-xl">
-                                            Professional Portrait
-                                        </p>
-                                    </div>
-                                </div>
+                            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-strong bg-gradient-to-br from-primary-light to-secondary-light relative">
+                                <StaticImage
+                                    src="../../images/professional portrait.png"
+                                    alt="Dr. Tasmiah Nawal"
+                                    placeholder="blurred"
+                                    className="w-full h-full"
+                                    imgStyle={{ objectFit: 'cover' }}
+                                />
                             </div>
 
                             {/* Floating Badge */}
