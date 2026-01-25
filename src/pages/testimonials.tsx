@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Quote, Star, Trash2, Edit, Plus, Filter } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
@@ -134,6 +134,24 @@ const TestimonialsPage: React.FC = () => {
         selectedRole === "All"
             ? testimonials
             : testimonials.filter((t) => t.role === selectedRole)
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+
+    // Reset index when filter changes
+    useEffect(() => {
+        setCurrentIndex(0)
+    }, [selectedRole])
+
+    // Auto-advance slideshow
+    useEffect(() => {
+        if (filteredTestimonials.length <= 1) return
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % filteredTestimonials.length)
+        }, 4000) // Stays for ~2s + buffer for animation
+
+        return () => clearInterval(interval)
+    }, [filteredTestimonials.length])
 
     const handleEdit = (id: number) => {
         console.log("Edit testimonial:", id)
@@ -332,30 +350,27 @@ const TestimonialsPage: React.FC = () => {
             {/* Testimonials Grid */}
             <section className="section-spacing">
                 <div className="container-custom">
-                    <motion.div
-                        layout
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    >
+                    <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative overflow-hidden">
                         <AnimatePresence mode="popLayout">
-                            {filteredTestimonials.map((testimonial, index) => (
+                            {filteredTestimonials.length > 0 && (
                                 <motion.div
-                                    key={testimonial.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.8 }}
-                                    transition={{ delay: index * 0.05 }}
+                                    key={filteredTestimonials[currentIndex].id}
+                                    initial={{ x: "100%", opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: "-100%", opacity: 0 }}
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                                    className="w-full"
                                 >
                                     <TestimonialCard
-                                        testimonial={testimonial}
+                                        testimonial={filteredTestimonials[currentIndex]}
                                         isAdmin={isAdmin}
                                         onEdit={handleEdit}
                                         onDelete={handleDelete}
                                     />
                                 </motion.div>
-                            ))}
+                            )}
                         </AnimatePresence>
-                    </motion.div>
+                    </div>
 
                     {filteredTestimonials.length === 0 && (
                         <motion.div
