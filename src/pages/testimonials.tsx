@@ -5,100 +5,9 @@ import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
+import { testimonials, Testimonial } from "@/data/testimonials"
 
-// Testimonial type
-interface Testimonial {
-    id: number
-    quote: string
-    author: string
-    role: "Patient" | "Student" | "Teacher" | "Colleague" | "Classmate"
-    location: string
-    rating: number
-    date: string
-    featured: boolean
-}
 
-// Dummy testimonials data
-const testimonials: Testimonial[] =
-    [
-        {
-            id: 1,
-            quote:
-                "Dr. Tasmiah listened carefully to my symptoms and explained the condition clearly. Her diagnosis and medicine recommendations were precise, and my health improved steadily under her guidance.",
-            author: "Md. Anisur Rahman",
-            role: "Patient",
-            location: "Dhaka",
-            rating: 5,
-            date: "2024-02-10",
-            featured: true,
-        },
-        {
-            id: 2,
-            quote:
-                "She is one of the most supportive classmates I have worked with. Always willing to help during ward rounds and study sessions, with a calm and practical approach to problem-solving.",
-            author: "Nusrat Jahan",
-            role: "Classmate",
-            location: "Medical College for Women, Uttara",
-            rating: 5,
-            date: "2024-01-28",
-            featured: true,
-        },
-        {
-            id: 3,
-            quote:
-                "The online consultation was very convenient. She reviewed my reports thoroughly and guided me on the next steps in a clear and reassuring manner.",
-            author: "Shahriar Kabir",
-            role: "Patient",
-            location: "Chattogram",
-            rating: 5,
-            date: "2024-01-18",
-            featured: true,
-        },
-        {
-            id: 4,
-            quote:
-                "Tasmiah demonstrates strong clinical curiosity and attentiveness during her training. She is disciplined, respectful, and consistently eager to learn from clinical cases.",
-            author: "Prof. Dr. Farhana Islam",
-            role: "Teacher",
-            location: "Medical College for Women, Uttara",
-            rating: 5,
-            date: "2024-12-22",
-            featured: false,
-        },
-        {
-            id: 5,
-            quote:
-                "Her ability to interpret investigation reports and correlate them clinically is commendable at this stage of training. She approaches patients with empathy and professionalism.",
-            author: "Dr. Mahmudul Hasan",
-            role: "Teacher",
-            location: "MCW Hospital, Dhaka",
-            rating: 5,
-            date: "2024-12-12",
-            featured: false,
-        },
-        {
-            id: 6,
-            quote:
-                "Working with her during community medical camps was a positive experience. She communicates well with patients and collaborates effectively with the healthcare team.",
-            author: "Dr. Samira Rahman",
-            role: "Colleague",
-            location: "Community Health Program, Dhaka",
-            rating: 5,
-            date: "2025-11-30",
-            featured: false,
-        },
-        {
-            id: 7,
-            quote:
-                "She has a sincere attitude toward patient care and pays close attention to clinical details. Her interest in cardiology is evident in her discussions and case analysis.",
-            author: "Dr. Md. Rezaul Karim",
-            role: "Teacher",
-            location: "Dhaka",
-            rating: 5,
-            date: "2024-11-18",
-            featured: false,
-        },
-    ]
 
 
 
@@ -165,31 +74,33 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
                 {/* Author Info */}
                 <div className="pt-4 border-t border-neutral-border">
-                    <p className="font-semibold text-neutral-text">{testimonial.author}</p>
-                    <div className="flex items-center justify-between mt-2">
-                        <div>
-                            <span
-                                className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${testimonial.role === "Patient"
-                                    ? "bg-blue-100 text-blue-700"
-                                    : testimonial.role === "Student"
-                                        ? "bg-green-100 text-green-700"
-                                        : testimonial.role === "Teacher"
-                                            ? "bg-purple-100 text-purple-700"
-                                            : "bg-orange-100 text-orange-700"
-                                    }`}
-                            >
-                                {testimonial.role}
-                            </span>
+                    <div className="flex items-start space-x-3">
+                        {testimonial.image && (
+                            <img
+                                src={testimonial.image}
+                                alt={testimonial.author}
+                                className="w-12 h-12 rounded-full object-cover shadow-sm"
+                            />
+                        )}
+                        <div className="flex-1">
+                            <p className="font-semibold text-neutral-text">{testimonial.author}</p>
+                            <div className="mt-1">
+                                <span
+                                    className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${testimonial.role === "Patient"
+                                        ? "bg-blue-100 text-blue-700"
+                                        : testimonial.role === "Student"
+                                            ? "bg-green-100 text-green-700"
+                                            : testimonial.role === "Teacher"
+                                                ? "bg-purple-100 text-purple-700"
+                                                : "bg-orange-100 text-orange-700"
+                                        }`}
+                                >
+                                    {testimonial.role}
+                                </span>
+                            </div>
+                            <p className="text-xs text-neutral-muted mt-1">{testimonial.location}</p>
                         </div>
-                        <p className="text-xs text-neutral-muted">{testimonial.location}</p>
                     </div>
-                    <p className="text-xs text-neutral-muted mt-2">
-                        {new Date(testimonial.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                    </p>
                 </div>
             </div>
 
