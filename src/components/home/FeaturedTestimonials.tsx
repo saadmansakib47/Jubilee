@@ -67,9 +67,18 @@ export const FeaturedTestimonials: React.FC = () => {
                             custom={index}
                         >
                             <Card hover glass className="h-full relative">
-                                {/* Quote Icon */}
-                                <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary-deep rounded-full flex items-center justify-center shadow-medium">
-                                    <Quote className="w-6 h-6 text-white" fill="currentColor" />
+                                {/* Top Bar: Quote Icon & Significant Words */}
+                                <div className="absolute -top-4 left-0 right-0 px-8 flex items-center justify-between pointer-events-none">
+                                    <div className="flex items-center space-x-4">
+                                        <div className="w-12 h-12 bg-primary-deep rounded-full flex items-center justify-center shadow-medium">
+                                            <Quote className="w-6 h-6 text-white" fill="currentColor" />
+                                        </div>
+                                        {testimonial.significantWords && (
+                                            <h3 className="text-xl font-display font-bold text-neutral-text opacity-90 mt-2">
+                                                {testimonial.significantWords}
+                                            </h3>
+                                        )}
+                                    </div>
                                 </div>
 
                                 <div className="pt-4 space-y-4">
@@ -90,33 +99,32 @@ export const FeaturedTestimonials: React.FC = () => {
 
                                     {/* Author Info */}
                                     <div className="pt-4 border-t border-neutral-border">
-                                        <div className="flex items-start space-x-3">
-                                            {testimonial.image && (
-                                                <img
-                                                    src={testimonial.image}
-                                                    alt={testimonial.author}
-                                                    className="w-12 h-12 rounded-full object-cover shadow-sm"
-                                                />
-                                            )}
-                                            <div className="flex-1">
-                                                <p className="font-semibold text-neutral-text">
-                                                    {testimonial.author}
-                                                </p>
-                                                <div className="mt-1">
-                                                    <p className="text-sm font-medium text-primary-deep">
-                                                        {testimonial.role}
-                                                    </p>
-                                                </div>
-                                                <p className="text-xs text-neutral-muted mt-1">
-                                                    {testimonial.location}
-                                                </p>
-                                            </div>
+                                        <p className="font-semibold text-neutral-text">
+                                            {testimonial.author}
+                                        </p>
+                                        <div className="mt-1">
+                                            <p className="text-sm font-medium text-primary-deep">
+                                                {testimonial.role}
+                                            </p>
                                         </div>
+                                        <p className="text-xs text-neutral-muted mt-1">
+                                            {testimonial.location}
+                                        </p>
                                     </div>
                                 </div>
 
-                                {/* Decorative Corner */}
-                                <div className="absolute bottom-4 right-4 w-16 h-16 border-2 border-primary-deep/10 rounded-tl-3xl" />
+                                {/* Decorative Corner / Profile Image */}
+                                <div className="absolute bottom-4 right-4 w-16 h-16 rounded-tl-3xl overflow-hidden shadow-sm border-2 border-primary-deep/10 bg-neutral-offWhite">
+                                    {testimonial.image ? (
+                                        <img
+                                            src={testimonial.image}
+                                            alt={testimonial.author}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-primary-deep/5" />
+                                    )}
+                                </div>
                             </Card>
                         </motion.div>
                     ))}

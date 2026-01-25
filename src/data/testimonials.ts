@@ -16,6 +16,7 @@ export interface Testimonial {
     date: string
     featured: boolean
     image?: string
+    significantWords: string
 }
 
 export const testimonials: Testimonial[] = [
@@ -30,6 +31,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-02-10",
         featured: true,
         image: anusurImg,
+        significantWords: "Precise Diagnosis",
     },
     {
         id: 2,
@@ -42,6 +44,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-01-28",
         featured: true,
         image: nusratImg,
+        significantWords: "Supportive Classmate",
     },
     {
         id: 3,
@@ -54,6 +57,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-01-18",
         featured: true,
         image: shahriarImg,
+        significantWords: "Convenient Consultation",
     },
     {
         id: 4,
@@ -66,6 +70,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-12-22",
         featured: false,
         image: farhanaImg,
+        significantWords: "Clinical Curiosity",
     },
     {
         id: 5,
@@ -78,6 +83,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-12-12",
         featured: false,
         image: mahmudulImg,
+        significantWords: "Clinical Correlation",
     },
     {
         id: 6,
@@ -90,6 +96,7 @@ export const testimonials: Testimonial[] = [
         date: "2025-11-30",
         featured: false,
         image: samiraImg,
+        significantWords: "Positive Experience",
     },
     {
         id: 7,
@@ -102,5 +109,6 @@ export const testimonials: Testimonial[] = [
         date: "2024-11-18",
         featured: false,
         image: rezaulImg,
+        significantWords: "Sincere Attitude",
     },
 ]
