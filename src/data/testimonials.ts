@@ -57,7 +57,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-01-18",
         featured: true,
         image: shahriarImg,
-        significantWords: "Convenient Consultation",
+        significantWords: "Thorough Review",
     },
     {
         id: 4,
@@ -70,7 +70,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-12-22",
         featured: false,
         image: farhanaImg,
-        significantWords: "Clinical Curiosity",
+        significantWords: "Clinically Curious",
     },
     {
         id: 5,
@@ -83,7 +83,7 @@ export const testimonials: Testimonial[] = [
         date: "2024-12-12",
         featured: false,
         image: mahmudulImg,
-        significantWords: "Clinical Correlation",
+        significantWords: "Professionally Sound",
     },
     {
         id: 6,
@@ -96,7 +96,7 @@ export const testimonials: Testimonial[] = [
         date: "2025-11-30",
         featured: false,
         image: samiraImg,
-        significantWords: "Positive Experience",
+        significantWords: "Communicates Well",
     },
     {
         id: 7,
