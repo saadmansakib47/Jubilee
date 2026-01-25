@@ -87,37 +87,41 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                 </p>
 
                 {/* Author Info */}
-                <div className="pt-4 border-t border-neutral-border">
-                    <p className="font-semibold text-neutral-text">{testimonial.author}</p>
-                    <div className="mt-1">
-                        <span
-                            className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${testimonial.role === "Patient"
-                                ? "bg-blue-100 text-blue-700"
-                                : testimonial.role === "Student"
-                                    ? "bg-green-100 text-green-700"
-                                    : testimonial.role === "Teacher"
-                                        ? "bg-purple-100 text-purple-700"
-                                        : "bg-orange-100 text-orange-700"
-                                }`}
-                        >
-                            {testimonial.role}
-                        </span>
+                <div className="pt-4 border-t border-neutral-border flex items-center space-x-4">
+                    {/* Profile Image */}
+                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-deep/10 bg-neutral-offWhite flex-shrink-0">
+                        {testimonial.image ? (
+                            <img
+                                src={testimonial.image}
+                                alt={testimonial.author}
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-primary-deep/5 flex items-center justify-center text-primary-deep font-bold">
+                                {testimonial.author.charAt(0)}
+                            </div>
+                        )}
                     </div>
-                    <p className="text-xs text-neutral-muted mt-1">{testimonial.location}</p>
-                </div>
-            </div>
 
-            {/* Decorative Corner / Profile Image */}
-            <div className="absolute bottom-4 right-4 w-16 h-16 rounded-tl-3xl overflow-hidden shadow-sm border-2 border-primary-deep/10 bg-neutral-offWhite">
-                {testimonial.image ? (
-                    <img
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        className="w-full h-full object-cover"
-                    />
-                ) : (
-                    <div className="w-full h-full bg-primary-deep/5" />
-                )}
+                    <div>
+                        <p className="font-semibold text-neutral-text">{testimonial.author}</p>
+                        <div className="mt-1 flex flex-wrap gap-2 items-center">
+                            <span
+                                className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-medium ${testimonial.role === "Patient"
+                                    ? "bg-blue-100 text-blue-700"
+                                    : testimonial.role === "Student"
+                                        ? "bg-green-100 text-green-700"
+                                        : testimonial.role === "Teacher"
+                                            ? "bg-purple-100 text-purple-700"
+                                            : "bg-orange-100 text-orange-700"
+                                    }`}
+                            >
+                                {testimonial.role}
+                            </span>
+                            <span className="text-xs text-neutral-muted">{testimonial.location}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </Card>
     )
@@ -452,7 +456,7 @@ const TestimonialsPage: React.FC = () => {
                                 animate={{ x: ["0%", "-50%"] }}
                                 transition={{
                                     repeat: Infinity,
-                                    duration: 30,
+                                    duration: 20,
                                     ease: "linear"
                                 }}
                             >
