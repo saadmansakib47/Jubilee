@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 import { testimonials, Testimonial } from "@/data/testimonials"
+import ahaImg from "../images/American Heart Association.png"
+import bcaImg from "../images/BCA.png"
+import excellenceImg from "../images/Excellence Award.png"
+import ministryImg from "../images/Health Ministry.png"
+import ssbImg from "../images/SSB.png"
 
 
 
@@ -404,7 +409,7 @@ const TestimonialsPage: React.FC = () => {
             </section>
 
             {/* Trust Indicators */}
-            <section className="section-spacing bg-neutral-offWhite">
+            <section className="section-spacing bg-neutral-offWhite overflow-hidden">
                 <div className="container-custom">
                     <motion.div
                         initial="hidden"
@@ -417,32 +422,71 @@ const TestimonialsPage: React.FC = () => {
                             Trusted By Leading Institutions
                         </h2>
                         <p className="text-lg text-neutral-muted">
-                            Recognized for excellence in mental health care
+                            Recognized for excellence in cardiac healthcare
                         </p>
                     </motion.div>
+
+                    {/* Marquee Slider */}
+                    <div className="w-full py-10 mb-20 relative">
+                        <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-neutral-offWhite to-transparent z-10" />
+                        <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-neutral-offWhite to-transparent z-10" />
+
+                        <div className="flex overflow-hidden">
+                            <motion.div
+                                className="flex items-center space-x-12 md:space-x-24 whitespace-nowrap"
+                                animate={{ x: ["0%", "-50%"] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 30,
+                                    ease: "linear"
+                                }}
+                            >
+                                {[...Array(3)].map((_, i) => (
+                                    <React.Fragment key={i}>
+                                        <img src={ahaImg} alt="American Heart Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                        <img src={bcaImg} alt="Bangladesh Cardiac Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                        <img src={excellenceImg} alt="Excellence Award" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                        <img src={ministryImg} alt="Health Ministry" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                        <img src={ssbImg} alt="SSB" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                    </React.Fragment>
+                                ))}
+                            </motion.div>
+                        </div>
+                    </div>
 
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={ANIMATION_VARIANTS.staggerContainer}
-                        className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                     >
                         {[
-                            "American Psychological Association",
-                            "National Board of Health",
-                            "Mental Health Alliance",
-                            "Clinical Excellence Award",
+                            { name: "American Heart Association", img: ahaImg },
+                            { name: "Bangladesh Cardiac Association", img: bcaImg },
+                            { name: "Health Ministry of Bangladesh", img: ministryImg },
+                            { name: "MENA Excellence Award", img: excellenceImg },
                         ].map((org, index) => (
                             <motion.div
-                                key={org}
+                                key={org.name}
                                 variants={ANIMATION_VARIANTS.staggerItem}
                                 custom={index}
-                                className="flex items-center justify-center p-6 bg-white rounded-xl shadow-soft"
+                                className="flex flex-col items-center p-6 bg-white rounded-xl shadow-soft hover:shadow-medium transition-all group h-full"
                             >
-                                <p className="text-sm font-medium text-neutral-muted text-center">
-                                    {org}
-                                </p>
+                                <div className="h-32 w-full flex items-center justify-center mb-4 p-2 bg-neutral-offWhite/50 rounded-lg">
+                                    <img src={org.img} alt={org.name} className="h-full w-auto object-contain max-w-full" />
+                                </div>
+                                <h3 className="text-lg font-semibold text-neutral-text text-center mb-6 min-h-[3rem] flex items-center justify-center">
+                                    {org.name}
+                                </h3>
+                                <div className="mt-auto w-full">
+                                    <Button
+                                        variant="outline"
+                                        className="w-full justify-center group-hover:bg-primary-deep group-hover:text-white group-hover:border-primary-deep transition-all duration-300"
+                                    >
+                                        View Certificate
+                                    </Button>
+                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
