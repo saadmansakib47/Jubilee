@@ -31,7 +31,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     onDelete,
 }) => {
     return (
-        <Card hover glass className="h-full relative group">
+        <Card hover glass className="h-full relative group border-2 border-primary-deep bg-[#ede6f0]">
             {/* Admin Controls */}
             {isAdmin && (
                 <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -50,32 +50,36 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                 </div>
             )}
 
-            {/* Featured Badge */}
-            {testimonial.featured && (
-                <div className="absolute -top-3 -left-3">
-                    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-medium">
-                        Featured
-                    </div>
-                </div>
-            )}
-
             {/* Top Bar: Quote Icon & Significant Words */}
             <div className="absolute -top-4 left-0 right-0 px-8 flex items-center justify-between pointer-events-none">
-                <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary-deep rounded-full flex items-center justify-center shadow-medium">
+                <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary-deep rounded-full flex items-center justify-center shadow-medium flex-shrink-0">
                         <Quote className="w-6 h-6 text-white" fill="currentColor" />
                     </div>
-                    {testimonial.significantWords && (
-                        <h3 className="text-xl md:text-2xl font-display font-bold text-neural-text opacity-90 mt-2">
-                            {testimonial.significantWords}
-                        </h3>
-                    )}
+
+                    <div className="flex flex-col pt-1">
+                        {testimonial.featured && (
+                            <div className="self-start mb-1">
+                                <span className="bg-gradient-to-br from-yellow-400 to-orange-500 text-white px-2 py-0.5 rounded-full text-[10px] font-semibold shadow-sm uppercase tracking-wide">
+                                    Featured
+                                </span>
+                            </div>
+                        )}
+                        {!testimonial.featured && testimonial.significantWords && (
+                            <div className="mb-6" />
+                        )}
+                        {testimonial.significantWords && (
+                            <h3 className="text-xl md:text-2xl font-display font-bold text-neural-text opacity-90 leading-none">
+                                {testimonial.significantWords}
+                            </h3>
+                        )}
+                    </div>
                 </div>
             </div>
 
             <div className="pt-4 space-y-4">
                 {/* Rating */}
-                <div className="flex space-x-1">
+                <div className="flex space-x-1 pl-16">
                     {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                     ))}
