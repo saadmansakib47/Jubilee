@@ -246,7 +246,7 @@ const TestimonialsPage: React.FC = () => {
             </section>
 
             {/* Filter & Admin Controls */}
-            <section className="py-8 bg-neutral-offWhite sticky top-20 z-40 shadow-soft">
+            <section className="py-8 bg-neutral-offWhite sticky top-20 z-20 shadow-soft">
                 <div className="container-custom">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         {/* Role Filter */}

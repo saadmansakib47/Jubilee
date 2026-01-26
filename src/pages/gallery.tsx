@@ -200,7 +200,7 @@ const GalleryPage: React.FC = () => {
             </section>
 
             {/* Category Filter */}
-            <section className="py-8 bg-white sticky top-20 z-40 shadow-soft">
+            <section className="py-8 bg-white sticky top-20 z-20 shadow-soft">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
