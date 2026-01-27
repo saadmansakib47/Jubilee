@@ -193,8 +193,8 @@ export const FeaturedTestimonials: React.FC = () => {
                     transition={{ delay: 0.4 }}
                     className="text-center"
                 >
-                    <Button variant="primary" size="lg" href="/testimonials">
-                        View Entire Showcase
+                    <Button variant="primary" size="lg" href="/testimonials" className="w-[300px] rounded-[16px]">
+                        Explore my showcase
                     </Button>
                 </motion.div>
             </div>

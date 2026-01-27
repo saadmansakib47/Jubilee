@@ -143,6 +143,7 @@ const TestimonialsPage: React.FC = () => {
             : testimonials.filter((t) => t.role === selectedRole)
 
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [direction, setDirection] = useState(0) // 1 for next, -1 for prev
 
     // Reset index when filter changes
     useEffect(() => {
@@ -161,10 +162,12 @@ const TestimonialsPage: React.FC = () => {
     }, [filteredTestimonials.length, currentIndex]) // Reset on manual navigation if needed, or just length
 
     const handleNext = () => {
+        setDirection(1)
         setCurrentIndex((prev) => (prev + 1) % filteredTestimonials.length)
     }
 
     const handlePrev = () => {
+        setDirection(-1)
         setCurrentIndex((prev) => (prev - 1 + filteredTestimonials.length) % filteredTestimonials.length)
     }
 
@@ -176,6 +179,21 @@ const TestimonialsPage: React.FC = () => {
     const handleDelete = (id: number) => {
         console.log("Delete testimonial:", id)
         // Implement delete logic
+    }
+
+    const variants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? "100%" : "-100%",
+            opacity: 0,
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction: number) => ({
+            x: direction < 0 ? "100%" : "-100%",
+            opacity: 0,
+        }),
     }
 
     return (
@@ -378,13 +396,15 @@ const TestimonialsPage: React.FC = () => {
                                 </button>
                             </div>
 
-                            <AnimatePresence mode="popLayout">
+                            <AnimatePresence mode="popLayout" custom={direction}>
                                 {filteredTestimonials.length > 0 && (
                                     <motion.div
                                         key={filteredTestimonials[currentIndex].id}
-                                        initial={{ x: "100%", opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        exit={{ x: "-100%", opacity: 0 }}
+                                        custom={direction}
+                                        variants={variants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
                                         transition={{ duration: 0.8, ease: "easeInOut" }}
                                         className="w-full"
                                     >
