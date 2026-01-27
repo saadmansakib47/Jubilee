@@ -89,29 +89,21 @@ export const FeaturedTestimonials: React.FC = () => {
                                                         </span>
                                                     </div>
                                                 )}
-                                                {!testimonial.featured && testimonial.significantWords && (
-                                                    <div className="mb-6" />
-                                                )}
                                                 {testimonial.significantWords && (
                                                     <h3 className="text-xl md:text-2xl font-display font-bold text-neural-text opacity-90 leading-none">
                                                         {testimonial.significantWords}
                                                     </h3>
                                                 )}
+                                                <div className="flex space-x-1 mt-1">
+                                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="pt-4 space-y-4">
-                                        {/* Rating */}
-                                        <div className="flex space-x-1 pl-16">
-                                            {[...Array(testimonial.rating)].map((_, i) => (
-                                                <Star
-                                                    key={i}
-                                                    className="w-5 h-5 text-yellow-400 fill-current"
-                                                />
-                                            ))}
-                                        </div>
-
+                                    <div className="pt-14 px-12 md:px-16 space-y-4">
                                         {/* Quote */}
                                         <p className="text-neutral-text leading-relaxed italic">
                                             "{testimonial.quote}"

@@ -366,7 +366,7 @@ const TestimonialsPage: React.FC = () => {
                 {/* Testimonials Grid */}
                 <section className="section-spacing">
                     <div className="container-custom">
-                        <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative group px-4 md:px-0">
+                        <div className="max-w-4xl mx-auto h-[500px] flex items-center justify-center relative group px-4 md:px-0">
                             {/* Navigation Arrows */}
                             <div className="absolute inset-y-0 left-0 md:-left-20 flex items-center z-50">
                                 <button
