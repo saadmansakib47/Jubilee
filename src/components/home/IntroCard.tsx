@@ -161,10 +161,10 @@ export const IntroCard: React.FC = () => {
 
                         {/* CTA Button */}
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <Button variant="primary" size="lg" href="/about">
+                            <Button variant="primary" size="lg" href="/about" className="rounded-[16px] shadow-lg">
                                 Read Full Bio
                             </Button>
-                            <Button variant="outline" size="lg" href="/contact">
+                            <Button variant="outline" size="lg" href="/contact" className="rounded-[16px] shadow-lg">
                                 Schedule Consultation
                             </Button>
                         </div>
