@@ -59,7 +59,7 @@ export const FeaturedTestimonials: React.FC = () => {
                 </motion.div>
 
                 {/* Testimonials Grid */}
-                <ShowcaseOverlay>
+                <ShowcaseOverlay trigger="scroll">
                     <motion.div
                         initial="hidden"
                         whileInView="visible"

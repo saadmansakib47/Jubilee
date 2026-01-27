@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Quote, Star, Trash2, Edit, Plus, Filter } from "lucide-react"
+import { Quote, Star, Trash2, Edit, Plus, Filter, ChevronLeft, ChevronRight } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
@@ -74,18 +74,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                                 {testimonial.significantWords}
                             </h3>
                         )}
+                        <div className="flex space-x-1 mt-1">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="pt-4 space-y-4">
-                {/* Rating */}
-                <div className="flex space-x-1 pl-16">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
-                </div>
-
+            <div className="pt-14 px-12 md:px-16 space-y-4">
                 {/* Quote */}
                 <p className="text-neutral-text leading-relaxed italic">
                     "{testimonial.quote}"
@@ -157,10 +155,18 @@ const TestimonialsPage: React.FC = () => {
 
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % filteredTestimonials.length)
-        }, 4000) // Stays for ~2s + buffer for animation
+        }, 6000) // Slightly longer for the showcase
 
         return () => clearInterval(interval)
-    }, [filteredTestimonials.length])
+    }, [filteredTestimonials.length, currentIndex]) // Reset on manual navigation if needed, or just length
+
+    const handleNext = () => {
+        setCurrentIndex((prev) => (prev + 1) % filteredTestimonials.length)
+    }
+
+    const handlePrev = () => {
+        setCurrentIndex((prev) => (prev - 1 + filteredTestimonials.length) % filteredTestimonials.length)
+    }
 
     const handleEdit = (id: number) => {
         console.log("Edit testimonial:", id)
@@ -360,7 +366,18 @@ const TestimonialsPage: React.FC = () => {
                 {/* Testimonials Grid */}
                 <section className="section-spacing">
                     <div className="container-custom">
-                        <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative overflow-hidden">
+                        <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative group px-4 md:px-0">
+                            {/* Navigation Arrows */}
+                            <div className="absolute inset-y-0 left-0 md:-left-20 flex items-center z-50">
+                                <button
+                                    onClick={handlePrev}
+                                    className="w-14 h-14 rounded-full bg-white/40 backdrop-blur-lg border-2 border-primary-deep/30 flex items-center justify-center text-primary-deep shadow-lg hover:bg-white/60 hover:scale-110 active:scale-95 transition-all duration-300 transform"
+                                    aria-label="Previous showcase"
+                                >
+                                    <ChevronLeft className="w-8 h-8" />
+                                </button>
+                            </div>
+
                             <AnimatePresence mode="popLayout">
                                 {filteredTestimonials.length > 0 && (
                                     <motion.div
@@ -380,6 +397,16 @@ const TestimonialsPage: React.FC = () => {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
+
+                            <div className="absolute inset-y-0 right-0 md:-right-20 flex items-center z-50">
+                                <button
+                                    onClick={handleNext}
+                                    className="w-14 h-14 rounded-full bg-white/40 backdrop-blur-lg border-2 border-primary-deep/30 flex items-center justify-center text-primary-deep shadow-lg hover:bg-white/60 hover:scale-110 active:scale-95 transition-all duration-300 transform"
+                                    aria-label="Next showcase"
+                                >
+                                    <ChevronRight className="w-8 h-8" />
+                                </button>
+                            </div>
                         </div>
 
                         {filteredTestimonials.length === 0 && (
@@ -524,4 +551,4 @@ const TestimonialsPage: React.FC = () => {
 
 export default TestimonialsPage
 
-export const Head = () => <title>Showcase - Virtual Chamber</title>
+export const Head = () => <title>Showcase - Dr.Tasmiah Nawal</title>
