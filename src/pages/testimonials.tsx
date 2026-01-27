@@ -457,21 +457,21 @@ const TestimonialsPage: React.FC = () => {
                             className="text-center max-w-3xl mx-auto"
                         >
                             <h2 className="font-display text-4xl md:text-5xl font-semibold mb-6">
-                                Ready to Start Your Journey?
+                                Planning to get a Health Check-up?
                             </h2>
                             <p className="text-xl text-white/90 mb-8">
-                                Join hundreds of satisfied clients who have transformed their lives
-                                through compassionate, evidence-based care.
+                                Schedule a consultation for medical guidance, report review, or follow-up
+                                care with a focus on accurate diagnosis and patient well-being.
                             </p>
-                            <div className="flex flex-wrap justify-center gap-4">
-                                <Button variant="secondary" size="lg" href="/contact">
+                            <div className="flex flex-wrap border-rounded-[16px] justify-center gap-4">
+                                <Button variant="secondary" size="lg" href="/contact" className="rounded-[18px]">
                                     Book Consultation
                                 </Button>
                                 <Button
                                     variant="outline"
                                     size="lg"
                                     href="/about"
-                                    className="border-white text-white hover:bg-white hover:text-primary-deep"
+                                    className="border-white text-white hover:bg-white hover:text-primary-deep rounded-[18px]"
                                 >
                                     Learn More
                                 </Button>
@@ -554,9 +554,9 @@ const TestimonialsPage: React.FC = () => {
                                     <div className="mt-auto w-full">
                                         <Button
                                             variant="outline"
-                                            className="w-full justify-center group-hover:bg-primary-deep group-hover:text-white group-hover:border-primary-deep transition-all duration-300"
+                                            className="w-full justify-center group-hover:bg-white rounded-[16px] group-hover:text-primary-deep group-hover:border-primary-deep transition-all duration-300"
                                         >
-                                            View Certificate
+                                            VIEW CERTIFICATE
                                         </Button>
                                     </div>
                                 </motion.div>
