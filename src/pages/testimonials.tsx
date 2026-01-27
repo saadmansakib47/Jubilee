@@ -4,6 +4,7 @@ import { Quote, Star, Trash2, Edit, Plus, Filter } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
+import { ShowcaseOverlay } from "@/components/ui/ShowcaseOverlay"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 import { testimonials, Testimonial } from "@/data/testimonials"
 import ahaImg from "../images/American Heart Association.png"
@@ -172,353 +173,355 @@ const TestimonialsPage: React.FC = () => {
     }
 
     return (
-        <Layout title="Testimonials">
-            {/* Hero Section */}
-            <section className="pt-32 pb-16 bg-gradient-to-br from-primary-light/30 to-secondary-light/30 relative overflow-hidden">
-                <div className="absolute top-20 right-10 w-72 h-72 bg-primary-deep/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary-deep/10 rounded-full blur-3xl" />
+        <Layout title="Showcase">
+            <ShowcaseOverlay>
+                {/* Hero Section */}
+                <section className="pt-32 pb-16 bg-gradient-to-br from-primary-light/30 to-secondary-light/30 relative overflow-hidden">
+                    <div className="absolute top-20 right-10 w-72 h-72 bg-primary-deep/10 rounded-full blur-3xl" />
+                    <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary-deep/10 rounded-full blur-3xl" />
 
-                <div className="container-custom relative z-10">
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={ANIMATION_VARIANTS.staggerContainer}
-                        className="text-center max-w-4xl mx-auto"
-                    >
+                    <div className="container-custom relative z-10">
                         <motion.div
-                            variants={ANIMATION_VARIANTS.fadeIn}
-                            className="inline-block px-4 py-2 bg-white rounded-full mb-6 shadow-soft"
+                            initial="hidden"
+                            animate="visible"
+                            variants={ANIMATION_VARIANTS.staggerContainer}
+                            className="text-center max-w-4xl mx-auto"
                         >
-                            <span className="text-sm font-medium text-primary-deep">
-                                Client Voices
-                            </span>
-                        </motion.div>
-
-                        <motion.h1
-                            variants={ANIMATION_VARIANTS.fadeUp}
-                            className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-neutral-text mb-6"
-                        >
-                            Stories of{" "}
-                            <span className="text-gradient">Transformation</span>
-                        </motion.h1>
-
-                        <motion.p
-                            variants={ANIMATION_VARIANTS.fadeUp}
-                            className="text-xl md:text-2xl text-neutral-muted leading-relaxed"
-                        >
-                            Real experiences from real people who found healing, growth, and
-                            hope through compassionate care
-                        </motion.p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="section-spacing bg-white">
-                <div className="container-custom">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={ANIMATION_VARIANTS.staggerContainer}
-                        className="grid grid-cols-2 md:grid-cols-4 gap-8"
-                    >
-                        {[
-                            { value: "500+", label: "Happy Clients" },
-                            { value: "95%", label: "Success Rate" },
-                            { value: "4.9/5", label: "Average Rating" },
-                            { value: "10+", label: "Years Experience" },
-                        ].map((stat, index) => (
                             <motion.div
-                                key={stat.label}
-                                variants={ANIMATION_VARIANTS.staggerItem}
-                                custom={index}
-                                className="text-center"
+                                variants={ANIMATION_VARIANTS.fadeIn}
+                                className="inline-block px-4 py-2 bg-white rounded-full mb-6 shadow-soft"
                             >
-                                <div className="font-display text-4xl md:text-5xl font-semibold text-primary-deep mb-2">
-                                    {stat.value}
-                                </div>
-                                <div className="text-neutral-muted">{stat.label}</div>
+                                <span className="text-sm font-medium text-primary-deep">
+                                    Professional Showcase
+                                </span>
                             </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
 
-            {/* Filter & Admin Controls */}
-            <section className="py-8 bg-neutral-offWhite sticky top-20 z-20 shadow-soft">
-                <div className="container-custom">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        {/* Role Filter */}
-                        <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                            <Filter className="w-5 h-5 text-neutral-muted self-center" />
-                            {roles.map((role) => (
-                                <button
-                                    key={role}
-                                    onClick={() => setSelectedRole(role)}
-                                    className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${selectedRole === role
-                                        ? "bg-primary-deep text-white shadow-medium"
-                                        : "bg-white text-neutral-text hover:bg-primary-light"
-                                        }`}
+                            <motion.h1
+                                variants={ANIMATION_VARIANTS.fadeUp}
+                                className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-neutral-text mb-6"
+                            >
+                                Clinical{" "}
+                                <span className="text-gradient">Showcase</span>
+                            </motion.h1>
+
+                            <motion.p
+                                variants={ANIMATION_VARIANTS.fadeUp}
+                                className="text-xl md:text-2xl text-neutral-muted leading-relaxed"
+                            >
+                                A collection of experiences and recognitions highlighting commitment to
+                                cardiovascular health and patient care
+                            </motion.p>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Stats Section */}
+                <section className="section-spacing bg-white">
+                    <div className="container-custom">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={ANIMATION_VARIANTS.staggerContainer}
+                            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                        >
+                            {[
+                                { value: "500+", label: "Happy Clients" },
+                                { value: "95%", label: "Success Rate" },
+                                { value: "4.9/5", label: "Average Rating" },
+                                { value: "10+", label: "Years Experience" },
+                            ].map((stat, index) => (
+                                <motion.div
+                                    key={stat.label}
+                                    variants={ANIMATION_VARIANTS.staggerItem}
+                                    custom={index}
+                                    className="text-center"
                                 >
-                                    {role}
-                                </button>
+                                    <div className="font-display text-4xl md:text-5xl font-semibold text-primary-deep mb-2">
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-neutral-muted">{stat.label}</div>
+                                </motion.div>
                             ))}
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Filter & Admin Controls */}
+                <section className="py-8 bg-neutral-offWhite sticky top-20 z-20 shadow-soft">
+                    <div className="container-custom">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                            {/* Role Filter */}
+                            <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                                <Filter className="w-5 h-5 text-neutral-muted self-center" />
+                                {roles.map((role) => (
+                                    <button
+                                        key={role}
+                                        onClick={() => setSelectedRole(role)}
+                                        className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${selectedRole === role
+                                            ? "bg-primary-deep text-white shadow-medium"
+                                            : "bg-white text-neutral-text hover:bg-primary-light"
+                                            }`}
+                                    >
+                                        {role}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Admin Add Button */}
+                            {isAdmin && (
+                                <Button
+                                    variant="primary"
+                                    onClick={() => setShowAddForm(!showAddForm)}
+                                >
+                                    <Plus className="w-5 h-5 mr-2" />
+                                    Add to Showcase
+                                </Button>
+                            )}
                         </div>
 
-                        {/* Admin Add Button */}
-                        {isAdmin && (
-                            <Button
-                                variant="primary"
-                                onClick={() => setShowAddForm(!showAddForm)}
-                            >
-                                <Plus className="w-5 h-5 mr-2" />
-                                Add Testimonial
-                            </Button>
-                        )}
-                    </div>
-
-                    {/* Add Form (Admin Only) */}
-                    <AnimatePresence>
-                        {isAdmin && showAddForm && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-6"
-                            >
-                                <Card className="p-6">
-                                    <h3 className="font-display text-2xl font-semibold text-neutral-text mb-4">
-                                        Add New Testimonial
-                                    </h3>
-                                    <form className="space-y-4">
-                                        <div className="grid md:grid-cols-2 gap-4">
+                        {/* Add Form (Admin Only) */}
+                        <AnimatePresence>
+                            {isAdmin && showAddForm && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="mt-6"
+                                >
+                                    <Card className="p-6">
+                                        <h3 className="font-display text-2xl font-semibold text-neutral-text mb-4">
+                                            Add New Entry to Showcase
+                                        </h3>
+                                        <form className="space-y-4">
+                                            <div className="grid md:grid-cols-2 gap-4">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Author Name"
+                                                    className="px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none"
+                                                />
+                                                <select className="px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none">
+                                                    <option value="">Select Role</option>
+                                                    <option value="Patient">Patient</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Teacher">Teacher</option>
+                                                    <option value="Colleague">Colleague</option>
+                                                </select>
+                                            </div>
                                             <input
                                                 type="text"
-                                                placeholder="Author Name"
-                                                className="px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none"
+                                                placeholder="Location (e.g., City Hospital)"
+                                                className="w-full px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none"
                                             />
-                                            <select className="px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none">
-                                                <option value="">Select Role</option>
-                                                <option value="Patient">Patient</option>
-                                                <option value="Student">Student</option>
-                                                <option value="Teacher">Teacher</option>
-                                                <option value="Colleague">Colleague</option>
-                                            </select>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            placeholder="Location (e.g., City Hospital)"
-                                            className="w-full px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none"
-                                        />
-                                        <textarea
-                                            placeholder="Testimonial quote..."
-                                            rows={4}
-                                            className="w-full px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none resize-none"
-                                        />
-                                        <div className="flex items-center space-x-4">
-                                            <label className="flex items-center space-x-2">
-                                                <input type="checkbox" className="rounded" />
-                                                <span className="text-sm text-neutral-text">
-                                                    Featured
-                                                </span>
-                                            </label>
-                                            <div className="flex items-center space-x-2">
-                                                <span className="text-sm text-neutral-text">
-                                                    Rating:
-                                                </span>
-                                                {[1, 2, 3, 4, 5].map((star) => (
-                                                    <Star
-                                                        key={star}
-                                                        className="w-5 h-5 text-yellow-400 cursor-pointer hover:fill-current"
-                                                    />
-                                                ))}
+                                            <textarea
+                                                placeholder="Write something for the showcase..."
+                                                rows={4}
+                                                className="w-full px-4 py-3 rounded-lg border border-neutral-border focus:border-primary-deep outline-none resize-none"
+                                            />
+                                            <div className="flex items-center space-x-4">
+                                                <label className="flex items-center space-x-2">
+                                                    <input type="checkbox" className="rounded" />
+                                                    <span className="text-sm text-neutral-text">
+                                                        Featured
+                                                    </span>
+                                                </label>
+                                                <div className="flex items-center space-x-2">
+                                                    <span className="text-sm text-neutral-text">
+                                                        Rating:
+                                                    </span>
+                                                    {[1, 2, 3, 4, 5].map((star) => (
+                                                        <Star
+                                                            key={star}
+                                                            className="w-5 h-5 text-yellow-400 cursor-pointer hover:fill-current"
+                                                        />
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="flex space-x-3">
-                                            <Button type="submit" variant="primary">
-                                                Save Testimonial
-                                            </Button>
-                                            <Button
-                                                type="button"
-                                                variant="outline"
-                                                onClick={() => setShowAddForm(false)}
-                                            >
-                                                Cancel
-                                            </Button>
-                                        </div>
-                                    </form>
-                                </Card>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </section>
-
-            {/* Testimonials Grid */}
-            <section className="section-spacing">
-                <div className="container-custom">
-                    <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative overflow-hidden">
-                        <AnimatePresence mode="popLayout">
-                            {filteredTestimonials.length > 0 && (
-                                <motion.div
-                                    key={filteredTestimonials[currentIndex].id}
-                                    initial={{ x: "100%", opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    exit={{ x: "-100%", opacity: 0 }}
-                                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                                    className="w-full"
-                                >
-                                    <TestimonialCard
-                                        testimonial={filteredTestimonials[currentIndex]}
-                                        isAdmin={isAdmin}
-                                        onEdit={handleEdit}
-                                        onDelete={handleDelete}
-                                    />
+                                            <div className="flex space-x-3">
+                                                <Button type="submit" variant="primary">
+                                                    Save Entry
+                                                </Button>
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    onClick={() => setShowAddForm(false)}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            </div>
+                                        </form>
+                                    </Card>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
+                </section>
 
-                    {filteredTestimonials.length === 0 && (
+                {/* Testimonials Grid */}
+                <section className="section-spacing">
+                    <div className="container-custom">
+                        <div className="max-w-4xl mx-auto min-h-[400px] flex items-center justify-center relative overflow-hidden">
+                            <AnimatePresence mode="popLayout">
+                                {filteredTestimonials.length > 0 && (
+                                    <motion.div
+                                        key={filteredTestimonials[currentIndex].id}
+                                        initial={{ x: "100%", opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        exit={{ x: "-100%", opacity: 0 }}
+                                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                                        className="w-full"
+                                    >
+                                        <TestimonialCard
+                                            testimonial={filteredTestimonials[currentIndex]}
+                                            isAdmin={isAdmin}
+                                            onEdit={handleEdit}
+                                            onDelete={handleDelete}
+                                        />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        {filteredTestimonials.length === 0 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="text-center py-20"
+                            >
+                                <Quote className="w-16 h-16 text-neutral-muted mx-auto mb-4" />
+                                <h3 className="font-display text-2xl font-semibold text-neutral-text mb-2">
+                                    No showcase entries found
+                                </h3>
+                                <p className="text-neutral-muted">
+                                    Try selecting a different category
+                                </p>
+                            </motion.div>
+                        )}
+                    </div>
+                </section>
+
+                {/* CTA Section */}
+                <section className="section-spacing bg-gradient-to-br from-primary-deep to-secondary-deep text-white">
+                    <div className="container-custom">
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center py-20"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center max-w-3xl mx-auto"
                         >
-                            <Quote className="w-16 h-16 text-neutral-muted mx-auto mb-4" />
-                            <h3 className="font-display text-2xl font-semibold text-neutral-text mb-2">
-                                No testimonials found
-                            </h3>
-                            <p className="text-neutral-muted">
-                                Try selecting a different category
+                            <h2 className="font-display text-4xl md:text-5xl font-semibold mb-6">
+                                Ready to Start Your Journey?
+                            </h2>
+                            <p className="text-xl text-white/90 mb-8">
+                                Join hundreds of satisfied clients who have transformed their lives
+                                through compassionate, evidence-based care.
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Button variant="secondary" size="lg" href="/contact">
+                                    Book Consultation
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="lg"
+                                    href="/about"
+                                    className="border-white text-white hover:bg-white hover:text-primary-deep"
+                                >
+                                    Learn More
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Trust Indicators */}
+                <section className="section-spacing bg-neutral-offWhite overflow-hidden">
+                    <div className="container-custom">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={ANIMATION_VARIANTS.fadeUp}
+                            className="text-center mb-12"
+                        >
+                            <h2 className="font-display text-4xl font-semibold text-neutral-text mb-4">
+                                Trusted By Leading Institutions
+                            </h2>
+                            <p className="text-lg text-neutral-muted">
+                                Recognized for excellence in cardiac healthcare
                             </p>
                         </motion.div>
-                    )}
-                </div>
-            </section>
 
-            {/* CTA Section */}
-            <section className="section-spacing bg-gradient-to-br from-primary-deep to-secondary-deep text-white">
-                <div className="container-custom">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center max-w-3xl mx-auto"
-                    >
-                        <h2 className="font-display text-4xl md:text-5xl font-semibold mb-6">
-                            Ready to Start Your Journey?
-                        </h2>
-                        <p className="text-xl text-white/90 mb-8">
-                            Join hundreds of satisfied clients who have transformed their lives
-                            through compassionate, evidence-based care.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Button variant="secondary" size="lg" href="/contact">
-                                Book Consultation
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                href="/about"
-                                className="border-white text-white hover:bg-white hover:text-primary-deep"
-                            >
-                                Learn More
-                            </Button>
+                        {/* Marquee Slider */}
+                        <div className="w-full py-10 mb-20 relative">
+                            <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-neutral-offWhite to-transparent z-10" />
+                            <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-neutral-offWhite to-transparent z-10" />
+
+                            <div className="flex overflow-hidden">
+                                <motion.div
+                                    className="flex items-center space-x-12 md:space-x-24 whitespace-nowrap"
+                                    animate={{ x: ["0%", "-50%"] }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 20,
+                                        ease: "linear"
+                                    }}
+                                >
+                                    {[...Array(3)].map((_, i) => (
+                                        <React.Fragment key={i}>
+                                            <img src={ahaImg} alt="American Heart Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                            <img src={bcaImg} alt="Bangladesh Cardiac Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                            <img src={excellenceImg} alt="Excellence Award" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                            <img src={ministryImg} alt="Health Ministry" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                            <img src={ssbImg} alt="SSB" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                                        </React.Fragment>
+                                    ))}
+                                </motion.div>
+                            </div>
                         </div>
-                    </motion.div>
-                </div>
-            </section>
 
-            {/* Trust Indicators */}
-            <section className="section-spacing bg-neutral-offWhite overflow-hidden">
-                <div className="container-custom">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={ANIMATION_VARIANTS.fadeUp}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="font-display text-4xl font-semibold text-neutral-text mb-4">
-                            Trusted By Leading Institutions
-                        </h2>
-                        <p className="text-lg text-neutral-muted">
-                            Recognized for excellence in cardiac healthcare
-                        </p>
-                    </motion.div>
-
-                    {/* Marquee Slider */}
-                    <div className="w-full py-10 mb-20 relative">
-                        <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-neutral-offWhite to-transparent z-10" />
-                        <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-neutral-offWhite to-transparent z-10" />
-
-                        <div className="flex overflow-hidden">
-                            <motion.div
-                                className="flex items-center space-x-12 md:space-x-24 whitespace-nowrap"
-                                animate={{ x: ["0%", "-50%"] }}
-                                transition={{
-                                    repeat: Infinity,
-                                    duration: 20,
-                                    ease: "linear"
-                                }}
-                            >
-                                {[...Array(3)].map((_, i) => (
-                                    <React.Fragment key={i}>
-                                        <img src={ahaImg} alt="American Heart Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
-                                        <img src={bcaImg} alt="Bangladesh Cardiac Association" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
-                                        <img src={excellenceImg} alt="Excellence Award" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
-                                        <img src={ministryImg} alt="Health Ministry" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
-                                        <img src={ssbImg} alt="SSB" className="h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
-                                    </React.Fragment>
-                                ))}
-                            </motion.div>
-                        </div>
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={ANIMATION_VARIANTS.staggerContainer}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                        >
+                            {[
+                                { name: "American Heart Association", img: ahaImg },
+                                { name: "Bangladesh Cardiac Association", img: bcaImg },
+                                { name: "Health Ministry of Bangladesh", img: ministryImg },
+                                { name: "MENA Excellence Award", img: excellenceImg },
+                            ].map((org, index) => (
+                                <motion.div
+                                    key={org.name}
+                                    variants={ANIMATION_VARIANTS.staggerItem}
+                                    custom={index}
+                                    className="flex flex-col items-center p-6 bg-white rounded-xl shadow-soft hover:shadow-medium transition-all group h-full"
+                                >
+                                    <div className="h-32 w-full flex items-center justify-center mb-4 p-2 bg-neutral-offWhite/50 rounded-lg">
+                                        <img src={org.img} alt={org.name} className="h-full w-auto object-contain max-w-full" />
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-neutral-text text-center mb-6 min-h-[3rem] flex items-center justify-center">
+                                        {org.name}
+                                    </h3>
+                                    <div className="mt-auto w-full">
+                                        <Button
+                                            variant="outline"
+                                            className="w-full justify-center group-hover:bg-primary-deep group-hover:text-white group-hover:border-primary-deep transition-all duration-300"
+                                        >
+                                            View Certificate
+                                        </Button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
                     </div>
-
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={ANIMATION_VARIANTS.staggerContainer}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                    >
-                        {[
-                            { name: "American Heart Association", img: ahaImg },
-                            { name: "Bangladesh Cardiac Association", img: bcaImg },
-                            { name: "Health Ministry of Bangladesh", img: ministryImg },
-                            { name: "MENA Excellence Award", img: excellenceImg },
-                        ].map((org, index) => (
-                            <motion.div
-                                key={org.name}
-                                variants={ANIMATION_VARIANTS.staggerItem}
-                                custom={index}
-                                className="flex flex-col items-center p-6 bg-white rounded-xl shadow-soft hover:shadow-medium transition-all group h-full"
-                            >
-                                <div className="h-32 w-full flex items-center justify-center mb-4 p-2 bg-neutral-offWhite/50 rounded-lg">
-                                    <img src={org.img} alt={org.name} className="h-full w-auto object-contain max-w-full" />
-                                </div>
-                                <h3 className="text-lg font-semibold text-neutral-text text-center mb-6 min-h-[3rem] flex items-center justify-center">
-                                    {org.name}
-                                </h3>
-                                <div className="mt-auto w-full">
-                                    <Button
-                                        variant="outline"
-                                        className="w-full justify-center group-hover:bg-primary-deep group-hover:text-white group-hover:border-primary-deep transition-all duration-300"
-                                    >
-                                        View Certificate
-                                    </Button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
+                </section>
+            </ShowcaseOverlay>
         </Layout>
     )
 }
 
 export default TestimonialsPage
 
-export const Head = () => <title>Testimonials - Virtual Chamber</title>
+export const Head = () => <title>Showcase - Virtual Chamber</title>

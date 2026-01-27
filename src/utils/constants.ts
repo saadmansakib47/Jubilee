@@ -65,8 +65,8 @@ export const NAV_LINKS = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Me" },
     { href: "/journal", label: "Journal" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/testimonials", label: "Testimonials" },
+    { href: "/gallery", label: "Memories" },
+    { href: "/testimonials", label: "Showcase" },
     { href: "/contact", label: "Contact" },
 ]
 
