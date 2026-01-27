@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
+import { Map, MapControls, MapMarker, MarkerContent, MarkerPopup } from "@/components/ui/map"
 import { ANIMATION_VARIANTS, SITE_CONFIG } from "@/utils/constants"
 
 // Form validation schema
@@ -61,28 +62,28 @@ const ContactPage: React.FC = () => {
             label: "Email",
             value: SITE_CONFIG.email,
             href: `mailto:${SITE_CONFIG.email}`,
-            color: "from-blue-500 to-blue-600",
+            color: "from-primary-deep to-secondary-deep",
         },
         {
             icon: Phone,
             label: "Phone",
             value: SITE_CONFIG.phone,
             href: `tel:${SITE_CONFIG.phone}`,
-            color: "from-green-500 to-green-600",
+            color: "from-primary-deep to-secondary-deep",
         },
         {
             icon: MapPin,
             label: "Address",
             value: SITE_CONFIG.address,
             href: "#map",
-            color: "from-red-500 to-red-600",
+            color: "from-primary-deep to-secondary-deep",
         },
         {
             icon: Clock,
             label: "Office Hours",
             value: "Mon-Fri: 9AM-5PM, Sat: 10AM-2PM",
             href: "#hours",
-            color: "from-purple-500 to-purple-600",
+            color: "from-primary-deep to-secondary-deep",
         },
     ]
 
@@ -482,7 +483,7 @@ const ContactPage: React.FC = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="font-display text-4xl font-semibold text-neutral-text mb-4">
-                            Visit Our Office
+                            Visit My Office
                         </h2>
                         <p className="text-lg text-neutral-muted">
                             Located in the heart of the city, easily accessible by public transport
@@ -494,20 +495,31 @@ const ContactPage: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="rounded-2xl overflow-hidden shadow-strong"
+                        className="rounded-2xl overflow-hidden shadow-strong aspect-video relative"
                     >
-                        {/* Placeholder for Google Maps - Replace with actual embed */}
-                        <div className="aspect-video bg-gradient-to-br from-primary-light to-secondary-light flex items-center justify-center">
-                            <div className="text-center p-8">
-                                <MapPin className="w-16 h-16 text-primary-deep mx-auto mb-4" />
-                                <h3 className="font-display text-2xl font-semibold text-primary-deep mb-2">
-                                    Map Integration
-                                </h3>
-                                <p className="text-neutral-muted max-w-md">
-                                    Embed your Google Maps iframe here to show your office location
-                                </p>
-                            </div>
-                        </div>
+                        <Map
+                            center={[90.401426, 23.8647565]}
+                            zoom={16}
+                        >
+                            <MapControls />
+                            <MapMarker longitude={90.401426} latitude={23.8647565}>
+                                <MarkerContent>
+                                    <div className="w-10 h-10 bg-primary-deep rounded-full flex items-center justify-center text-white shadow-glow border-2 border-white ring-4 ring-primary-light/30">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                </MarkerContent>
+                                <MarkerPopup>
+                                    <div className="p-3 min-w-[200px]">
+                                        <h4 className="font-bold text-neutral-text mb-1">My Office</h4>
+                                        <p className="text-xs text-neutral-muted leading-relaxed">
+                                            Medical College for Women & Hospital<br />
+                                            Plot 4, Road 9, Sector 1, Uttara<br />
+                                            Dhaka, Bangladesh
+                                        </p>
+                                    </div>
+                                </MarkerPopup>
+                            </MapMarker>
+                        </Map>
                     </motion.div>
                 </div>
             </section>
