@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Upload, Image as ImageIcon, X } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
+import { PhotoMarquee } from "@/components/gallery/PhotoMarquee"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 
 import groupStudyImg from "../images/group-study.png"
@@ -185,19 +186,22 @@ const GalleryPage: React.FC = () => {
                             variants={ANIMATION_VARIANTS.fadeUp}
                             className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-neutral-text mb-6"
                         >
-                            Our <span className="text-gradient">Gallery</span>
+                            My <span className="text-gradient">Memories</span>
                         </motion.h1>
 
                         <motion.p
                             variants={ANIMATION_VARIANTS.fadeUp}
                             className="text-xl md:text-2xl text-neutral-muted leading-relaxed"
                         >
-                            A glimpse into our welcoming space and the supportive community
-                            we've built together
+                            Moments from my medical journey — from academic life and clinical learning
+                            to conferences, seminars, and patient care experiences.
                         </motion.p>
                     </motion.div>
                 </div>
             </section>
+
+            {/* Stories Marquee */}
+            <PhotoMarquee />
 
             {/* Category Filter */}
             <section className="py-8 bg-white sticky top-20 z-20 shadow-soft">
@@ -365,4 +369,4 @@ const GalleryPage: React.FC = () => {
 
 export default GalleryPage
 
-export const Head = () => <title>Gallery - Virtual Chamber</title>
+export const Head = () => <title>Gallery - Dr.Tasmiah Nawal</title>
