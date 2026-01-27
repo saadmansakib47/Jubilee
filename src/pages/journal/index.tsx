@@ -147,10 +147,10 @@ const JournalIndexPage: React.FC = () => {
                                 variants={ANIMATION_VARIANTS.fadeUp}
                                 className="flex flex-wrap gap-4"
                             >
-                                <Button variant="primary" size="lg" href="#recent">
+                                <Button variant="primary" size="lg" href="#recent" className="rounded-[14px]">
                                     Latest Entries
                                 </Button>
-                                <Button variant="outline" size="lg" href="#categories">
+                                <Button variant="outline" size="lg" href="#categories" className="rounded-[14px]">
                                     Browse Categories
                                 </Button>
                             </motion.div>
@@ -226,7 +226,7 @@ const JournalIndexPage: React.FC = () => {
                                         <Card hover className="h-full group">
                                             <div className="flex items-start space-x-4">
                                                 <div
-                                                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center flex-shrink-0 shadow-medium group-hover:scale-110 transition-transform`}
+                                                    className="w-16 h-16 rounded-2xl bg-primary-deep flex items-center justify-center flex-shrink-0 shadow-medium group-hover:scale-110 transition-transform"
                                                 >
                                                     <category.icon className="w-8 h-8 text-white" />
                                                 </div>
@@ -274,7 +274,7 @@ const JournalIndexPage: React.FC = () => {
                                     Latest insights and updates
                                 </p>
                             </div>
-                            <Button variant="outline" href="/journal/blog">
+                            <Button variant="outline" href="/journal/blog" className="rounded-[14px]">
                                 View All
                             </Button>
                         </motion.div>
@@ -285,6 +285,7 @@ const JournalIndexPage: React.FC = () => {
                             viewport={{ once: true }}
                             variants={ANIMATION_VARIANTS.staggerContainer}
                             className="space-y-6"
+
                         >
                             {recentEntries.map((entry, index) => (
                                 <motion.div
@@ -296,7 +297,7 @@ const JournalIndexPage: React.FC = () => {
                                         to={`/journal/${entry.type}/${entry.id}`}
                                         className="block group"
                                     >
-                                        <Card hover className="p-6">
+                                        <Card hover className="p-6 border border-primary-deep/40 bg-[#fcfaff] shadow-soft">
                                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                                 <div className="flex-1">
                                                     <div className="flex items-center space-x-3 mb-3">
@@ -352,9 +353,9 @@ const JournalIndexPage: React.FC = () => {
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="flex-1 px-6 py-3 rounded-full text-neutral-text outline-none"
+                                    className="flex-1 px-6 py-3 text-neutral-text outline-none rounded-[14px]"
                                 />
-                                <Button variant="secondary" size="lg">
+                                <Button variant="secondary" size="lg" className="rounded-[14px]">
                                     Subscribe
                                 </Button>
                             </div>

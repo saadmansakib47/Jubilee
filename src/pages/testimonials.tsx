@@ -250,10 +250,10 @@ const TestimonialsPage: React.FC = () => {
                             className="grid grid-cols-2 md:grid-cols-4 gap-8"
                         >
                             {[
-                                { value: "500+", label: "Happy Clients" },
-                                { value: "95%", label: "Success Rate" },
-                                { value: "4.9/5", label: "Average Rating" },
-                                { value: "10+", label: "Years Experience" },
+                                { value: "500+", label: "Happy Patients" },
+                                { value: "100%", label: "Success Rate" },
+                                { value: "5/5", label: "Average Rating" },
+                                { value: "3+", label: "Years Experience" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={stat.label}
