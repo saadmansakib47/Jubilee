@@ -145,9 +145,9 @@ export const Hero: React.FC = () => {
                             className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8"
                         >
                             {[
-                                { value: "10+", label: "Years Experience" },
+                                { value: "3+", label: "Years Experience" },
                                 { value: "500+", label: "Happy Patients" },
-                                { value: "95%", label: "Success Rate" },
+                                { value: "100%", label: "Success Rate" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={stat.label}

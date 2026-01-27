@@ -239,8 +239,7 @@ const TestimonialsPage: React.FC = () => {
                     </div>
                 </section>
 
-                {/* Stats Section */}
-                <section className="section-spacing bg-white">
+                <section className="section-spacing bg-white relative z-10">
                     <div className="container-custom">
                         <motion.div
                             initial="hidden"
@@ -250,21 +249,22 @@ const TestimonialsPage: React.FC = () => {
                             className="grid grid-cols-2 md:grid-cols-4 gap-8"
                         >
                             {[
-                                { value: "500+", label: "Happy Patients" },
-                                { value: "100%", label: "Success Rate" },
-                                { value: "5/5", label: "Average Rating" },
-                                { value: "3+", label: "Years Experience" },
+                                { id: "patients", value: "500+", label: "Happy Patients" },
+                                { id: "success", value: "100%", label: "Success Rate" },
+                                { id: "rating", value: "5/5", label: "Average Rating" },
+                                { id: "experience", value: "3+", label: "Years Experience" },
                             ].map((stat, index) => (
                                 <motion.div
-                                    key={stat.label}
+                                    key={stat.id}
                                     variants={ANIMATION_VARIANTS.staggerItem}
                                     custom={index}
-                                    className="text-center"
+                                    className="text-center p-4 rounded-xl hover:bg-primary-light/10 transition-colors"
+                                    whileHover={{ scale: 1.05 }}
                                 >
                                     <div className="font-display text-4xl md:text-5xl font-semibold text-primary-deep mb-2">
                                         {stat.value}
                                     </div>
-                                    <div className="text-neutral-muted">{stat.label}</div>
+                                    <div className="text-neutral-muted font-medium">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
