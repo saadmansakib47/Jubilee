@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import {
     BookOpen,
     FileText,
@@ -99,6 +99,54 @@ const categoryCards = [
     },
 ]
 
+const CARDIOLOGY_NEWS = [
+    "NEW STUDY REVEALS BENEFITS OF MEDITERRANEAN DIET ON HEART HEALTH",
+    "AI-DRIVEN DIAGNOSTIC TOOLS IMPROVE EARLY DETECTION OF AFIB",
+    "BREAKTHROUGH IN GENE THERAPY FOR CONGESTIVE HEART FAILURE",
+    "RECENT DATA SUGGESTS HYPERTENSION MANAGEMENT REDUCES STROKE RISK BY 25%",
+    "ADVANCED IMAGING TECHNIQUES PROVIDE CLEARER INSIGHTS INTO CORONARY ARTERY DISEASE",
+]
+
+const NewsTicker: React.FC = () => {
+    const [index, setIndex] = React.useState(0)
+
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % CARDIOLOGY_NEWS.length)
+        }, 4000)
+        return () => clearInterval(timer)
+    }, [])
+
+    return (
+        <div className="h-12 flex items-center mb-4 overflow-hidden">
+            <div className="flex items-center space-x-3 bg-primary-deep/5 px-4 py-1.5 rounded-lg border border-primary-deep/10">
+                <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-deep opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-deep" />
+                </span>
+                <span className="text-[10px] font-bold text-primary-deep uppercase tracking-widest whitespace-nowrap">
+                    BREAKING
+                </span>
+                <div className="h-4 w-[1px] bg-primary-deep/20" />
+                <div className="relative h-6 flex-1 min-w-[300px] md:min-w-[500px]">
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={index}
+                            initial={{ y: 15, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -15, opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            className="absolute inset-0 text-sm font-poppins font-bold text-primary-deep tracking-wide uppercase truncate"
+                        >
+                            {CARDIOLOGY_NEWS[index]}
+                        </motion.p>
+                    </AnimatePresence>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const JournalIndexPage: React.FC = () => {
     return (
         <Layout title="Journal">
@@ -112,6 +160,7 @@ const JournalIndexPage: React.FC = () => {
                     <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary-deep/10 rounded-full blur-3xl" />
 
                     <div className="container-custom relative z-10">
+                        <NewsTicker />
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -223,7 +272,7 @@ const JournalIndexPage: React.FC = () => {
                                     custom={index}
                                 >
                                     <Link to={category.href}>
-                                        <Card hover className="h-full group">
+                                        <Card hover className="h-full group border border-primary-deep/40 bg-[#fcfaff] shadow-soft">
                                             <div className="flex items-start space-x-4">
                                                 <div
                                                     className="w-16 h-16 rounded-2xl bg-primary-deep flex items-center justify-center flex-shrink-0 shadow-medium group-hover:scale-110 transition-transform"
