@@ -158,7 +158,7 @@ const JournalIndexPage: React.FC = () => {
                     <div className="absolute top-1/2 -right-20 -translate-y-1/2 w-[500px] h-[500px] opacity-20 pointer-events-none select-none">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            animate={{ opacity: 0.5, scale: 1, rotate: 0 }}
                             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
                         >
                             <StaticImage
