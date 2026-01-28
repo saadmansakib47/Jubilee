@@ -14,6 +14,7 @@ import { Layout } from "@/components/layout/Layout"
 import { JournalSidebar } from "@/components/journal/Sidebar"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
+import { StaticImage } from "gatsby-plugin-image"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 
 // Dummy recent entries
@@ -152,6 +153,22 @@ const JournalIndexPage: React.FC = () => {
                 <section className="pt-32 pb-16 bg-gradient-to-br from-primary-light/30 to-secondary-light/30 relative overflow-hidden">
                     <div className="absolute top-20 right-10 w-72 h-72 bg-primary-deep/10 rounded-full blur-3xl" />
                     <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary-deep/10 rounded-full blur-3xl" />
+
+                    {/* Background Heart Image */}
+                    <div className="absolute top-1/2 -right-20 -translate-y-1/2 w-[500px] h-[500px] opacity-20 pointer-events-none select-none">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+                        >
+                            <StaticImage
+                                src="../../images/Heart.png"
+                                alt="Heart Background"
+                                className="w-full h-full object-contain"
+                                placeholder="blurred"
+                            />
+                        </motion.div>
+                    </div>
 
                     <div className="container-custom relative z-10">
                         <motion.div
