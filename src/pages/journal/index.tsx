@@ -100,11 +100,11 @@ const categoryCards = [
 ]
 
 const CARDIOLOGY_NEWS = [
-    "NEW STUDY REVEALS BENEFITS OF MEDITERRANEAN DIET ON HEART HEALTH",
-    "AI-DRIVEN DIAGNOSTIC TOOLS IMPROVE EARLY DETECTION OF AFIB",
-    "BREAKTHROUGH IN GENE THERAPY FOR CONGESTIVE HEART FAILURE",
-    "RECENT DATA SUGGESTS HYPERTENSION MANAGEMENT REDUCES STROKE RISK BY 25%",
-    "ADVANCED IMAGING TECHNIQUES PROVIDE CLEARER INSIGHTS INTO CORONARY ARTERY DISEASE",
+    "New study reveals benefits of Mediterranean diet on heart health",
+    "AI-driven diagnostic tools improve early detection of AFib",
+    "Breakthrough in gene therapy for congestive heart failure",
+    "Recent data suggests hypertension management reduces stroke risk by 25%",
+    "Advanced imaging techniques provide clearer insights into coronary artery disease",
 ]
 
 const NewsTicker: React.FC = () => {
@@ -113,33 +113,27 @@ const NewsTicker: React.FC = () => {
     React.useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % CARDIOLOGY_NEWS.length)
-        }, 4000)
+        }, 5000)
         return () => clearInterval(timer)
     }, [])
 
     return (
-        <div className="h-12 flex items-center mb-4 overflow-hidden">
-            <div className="flex items-center space-x-3 bg-primary-deep/5 px-4 py-1.5 rounded-lg border border-primary-deep/10">
-                <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-deep opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-deep" />
-                </span>
-                <span className="text-[10px] font-bold text-primary-deep uppercase tracking-widest whitespace-nowrap">
-                    BREAKING
-                </span>
-                <div className="h-4 w-[1px] bg-primary-deep/20" />
-                <div className="relative h-6 flex-1 min-w-[300px] md:min-w-[500px]">
+        <div className="w-full py-10 md:py-12 border-y border-primary-deep/5 overflow-hidden">
+            <div className="container-custom">
+                <div className="relative h-24 md:h-12 flex items-center justify-center">
                     <AnimatePresence mode="wait">
-                        <motion.p
+                        <motion.div
                             key={index}
-                            initial={{ y: 15, opacity: 0 }}
+                            initial={{ y: 30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -15, opacity: 0 }}
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
-                            className="absolute inset-0 text-sm font-poppins font-bold text-primary-deep tracking-wide uppercase truncate"
+                            exit={{ y: -30, opacity: 0 }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute inset-0 flex items-center justify-center text-center px-4"
                         >
-                            {CARDIOLOGY_NEWS[index]}
-                        </motion.p>
+                            <p className="text-lg md:text-xl font-poppins font-medium text-primary-deep leading-relaxed max-w-4xl">
+                                {CARDIOLOGY_NEWS[index]}
+                            </p>
+                        </motion.div>
                     </AnimatePresence>
                 </div>
             </div>
@@ -160,7 +154,6 @@ const JournalIndexPage: React.FC = () => {
                     <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary-deep/10 rounded-full blur-3xl" />
 
                     <div className="container-custom relative z-10">
-                        <NewsTicker />
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -239,6 +232,8 @@ const JournalIndexPage: React.FC = () => {
                         </motion.div>
                     </div>
                 </section>
+
+                <NewsTicker />
 
                 {/* Category Cards */}
                 <section id="categories" className="section-spacing bg-neutral-offWhite">
