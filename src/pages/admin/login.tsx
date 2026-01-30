@@ -24,7 +24,6 @@ const AdminLoginPage: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [showDemo, setShowDemo] = useState(true)
 
     const {
         register,
@@ -90,37 +89,6 @@ const AdminLoginPage: React.FC = () => {
                         </p>
                     </motion.div>
 
-                    {/* Demo Credentials Notice */}
-                    {showDemo && (
-                        <motion.div
-                            variants={ANIMATION_VARIANTS.fadeUp}
-                            className="mb-6"
-                        >
-                            <Card className="bg-blue-50 border-2 border-blue-200 p-4">
-                                <div className="flex items-start space-x-3">
-                                    <AlertCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                                    <div className="flex-1">
-                                        <p className="text-sm font-semibold text-blue-900 mb-1">
-                                            Demo Credentials
-                                        </p>
-                                        <p className="text-xs text-blue-700 mb-2">
-                                            For testing purposes, use these credentials:
-                                        </p>
-                                        <div className="bg-white/50 rounded p-2 text-xs font-mono text-blue-900">
-                                            <div>Email: admin@virtualchamber.com</div>
-                                            <div>Password: admin123</div>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => setShowDemo(false)}
-                                        className="text-blue-500 hover:text-blue-700"
-                                    >
-                                        ×
-                                    </button>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    )}
 
                     {/* Error Message */}
                     {error && (

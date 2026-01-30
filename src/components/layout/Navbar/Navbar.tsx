@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Menu, X, Download } from "lucide-react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { Menu, X, Download, LogOut, LayoutDashboard, User } from "lucide-react"
 import { Button } from "@/components/ui/Button"
+import { NotificationBell } from "@/components/admin/NotificationBell"
+import { authService } from "@/services/auth"
 import { NAV_LINKS, SITE_CONFIG } from "@/utils/constants"
 import { cn } from "@/utils/cn"
 
 export const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
     const { scrollY } = useScroll()
+
+
+    const handleLogout = () => {
+        authService.logout()
+        setIsAdmin(false)
+        if (typeof window !== "undefined") {
+            window.location.href = "/"
+        }
+    }
+
 
     const backgroundColor = useTransform(
         scrollY,
@@ -26,6 +39,18 @@ export const Navbar: React.FC = () => {
         }
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
+    // Check admin status on mount and when auth changes
+    useEffect(() => {
+        const checkAdmin = () => {
+            setIsAdmin(authService.isAdmin())
+        }
+        checkAdmin()
+
+        // Re-check periodically in case of login/logout
+        const interval = setInterval(checkAdmin, 5000)
+        return () => clearInterval(interval)
     }, [])
 
     return (
@@ -85,7 +110,41 @@ export const Navbar: React.FC = () => {
                         </div>
 
                         <div className="hidden lg:flex items-center space-x-4">
-                            <Button variant="outline" size="md" className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm">
+                            {/* Notification Bell for Admin */}
+                            {isAdmin && <NotificationBell />}
+
+                            {isAdmin ? (
+                                <div className="flex items-center space-x-2">
+                                    <Link to="/admin/dashboard">
+                                        <Button variant="outline" size="md" className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm border-primary-light text-primary-deep hover:bg-primary-light">
+                                            <LayoutDashboard className="w-4 h-4 mr-2" />
+                                            Dashboard
+                                        </Button>
+                                    </Link>
+                                    <Button
+                                        variant="ghost"
+                                        size="md"
+                                        onClick={handleLogout}
+                                        className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm text-red-500 hover:bg-red-50 hover:text-red-600"
+                                    >
+                                        <LogOut className="w-4 h-4 mr-2" />
+                                        Logout
+                                    </Button>
+                                </div>
+                            ) : (
+                                <Link to="/admin/login">
+                                    <Button variant="ghost" size="md" className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm text-neutral-muted hover:text-primary-deep">
+                                        <User className="w-4 h-4 mr-2" />
+                                        Admin Login
+                                    </Button>
+                                </Link>
+                            )}
+
+                            <Button
+                                variant="outline"
+                                size="md"
+                                className="rounded-[16px] font-poppins font-medium uppercase tracking-wider text-sm"
+                            >
                                 <Download className="w-5 h-5 mr-2" />
                                 Download CV
                             </Button>
@@ -136,6 +195,34 @@ export const Navbar: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 pt-6 border-t border-neutral-border">
+
+                        {isAdmin ? (
+                            <>
+                                <Link to="/admin/dashboard" onClick={() => setIsOpen(false)} className="block">
+                                    <Button variant="outline" size="md" className="w-full mt-3 rounded-[16px] font-poppins font-medium uppercase tracking-wide border-primary-light text-primary-deep">
+                                        <LayoutDashboard className="w-5 h-5 mr-2" />
+                                        Admin Dashboard
+                                    </Button>
+                                </Link>
+                                <Button
+                                    variant="ghost"
+                                    size="md"
+                                    onClick={handleLogout}
+                                    className="w-full rounded-[16px] font-poppins font-medium uppercase tracking-wide text-red-500"
+                                >
+                                    <LogOut className="w-5 h-5 mr-2" />
+                                    Logout
+                                </Button>
+                            </>
+                        ) : (
+                            <Link to="/admin/login" onClick={() => setIsOpen(false)} className="block">
+                                <Button variant="ghost" size="md" className="w-full rounded-[16px] font-poppins font-medium uppercase tracking-wide text-neutral-muted">
+                                    <User className="w-5 h-5 mr-2" />
+                                    Admin Login
+                                </Button>
+                            </Link>
+                        )}
+
                         <Button variant="outline" size="md" className="w-full rounded-[16px] font-poppins font-medium uppercase tracking-wide">
                             <Download className="w-5 h-5 mr-2" />
                             Download CV

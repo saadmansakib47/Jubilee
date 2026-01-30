@@ -16,6 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
     className,
     children,
     href,
+    asChild,
     ...props
 }) => {
     const baseStyles =
@@ -38,7 +39,6 @@ export const Button: React.FC<ButtonProps> = ({
         lg: "px-10 py-4 text-lg",
     }
 
-    const MotionButton = motion.button
 
     if (href) {
         return (
@@ -47,6 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
                 className={cn(baseStyles, variants[variant], sizes[size], className)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                {...(props as any)}
             >
                 {children}
             </motion.a>
@@ -54,13 +55,13 @@ export const Button: React.FC<ButtonProps> = ({
     }
 
     return (
-        <MotionButton
+        <motion.button
             className={cn(baseStyles, variants[variant], sizes[size], className)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            {...props}
+            {...(props as any)}
         >
             {children}
-        </MotionButton>
+        </motion.button>
     )
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Upload, Image as ImageIcon, X } from "lucide-react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { Upload, Image as ImageIcon, X, Edit2, Trash2, Loader2, Check } from "lucide-react"
 import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { PhotoMarquee } from "@/components/gallery/PhotoMarquee"
+import { authService } from "@/services/auth"
+import { memoryApi } from "@/services/api"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 
 import groupStudyImg from "../images/group-study.png"
@@ -16,78 +18,79 @@ import classroomImg from "../images/classroom setting.png"
 import teamworkImg from "../images/teamwork.png"
 import eventImg from "../images/event.png"
 
-const galleryImages = [
+const staticGalleryImages = [
     {
-        id: 1,
-        // Medical student group studying together
+        id: "1",
         url: groupStudyImg,
         title: "Medical Students in Study Session",
         category: "College",
     },
     {
-        id: 2,
-        // Doctors at medical seminar / conference
+        id: "2",
         url: conferenceImg,
         title: "Medical Conference Discussion",
         category: "Conference",
     },
     {
-        id: 3,
-        // Lecture / seminar environment
+        id: "3",
         url: seminarImg,
         title: "Seminar Presentation at Medical College",
         category: "Conference",
     },
     {
-        id: 4,
-        // Students and instructor in academic setting
+        id: "4",
         url: discussionImg,
         title: "Hands-on Clinical Discussion",
         category: "Clinical",
     },
     {
-        id: 5,
-        // Patient interacting positively with clinician
+        id: "5",
         url: patientsImg,
         title: "Patient Consultation and Care",
         category: "Clinical",
     },
     {
-        id: 6,
-        // Heart image or medical research concept
+        id: "6",
         url: cardiologyImg,
         title: "Cardiology Research & Focus",
         category: "Research",
     },
     {
-        id: 7,
-        // Medical students in classroom setting
+        id: "7",
         url: classroomImg,
         title: "Classroom Education for Medical Students",
         category: "College",
     },
     {
-        id: 8,
-        // Clinical teamwork, discussion case
+        id: "8",
         url: teamworkImg,
         title: "Clinical Case Discussion",
         category: "Research",
     },
     {
-        id: 9,
-        // Seminar crowd / event
+        id: "9",
         url: eventImg,
         title: "Medical Event & Seminar",
         category: "Conference",
     },
 ];
 
-interface GalleryImageProps {
-    image: typeof galleryImages[0]
-    index: number
+interface GalleryImageType {
+    id: string
+    url: string
+    title: string
+    category: string
 }
 
-const GalleryImage: React.FC<GalleryImageProps> = ({ image, index }) => {
+interface GalleryImageProps {
+    image: GalleryImageType
+    index: number
+    isAdmin?: boolean
+    onEdit?: (id: string, title: string) => void
+    onDelete?: (id: string) => void
+}
+
+const GalleryImage: React.FC<GalleryImageProps> = ({ image, index, isAdmin, onEdit, onDelete }) => {
     const ref = useRef<HTMLDivElement>(null)
     const [opacity, setOpacity] = useState(1)
 
@@ -99,9 +102,6 @@ const GalleryImage: React.FC<GalleryImageProps> = ({ image, index }) => {
             const windowHeight = window.innerHeight
             const elementCenter = rect.top + rect.height / 2
 
-            // Calculate opacity based on distance from center
-            // Center of viewport = 100% opacity
-            // Top/bottom edges = 80% opacity
             const distanceFromCenter = Math.abs(windowHeight / 2 - elementCenter)
             const maxDistance = windowHeight / 2
             const opacityValue = 1 - (distanceFromCenter / maxDistance) * 0.2
@@ -110,7 +110,7 @@ const GalleryImage: React.FC<GalleryImageProps> = ({ image, index }) => {
         }
 
         window.addEventListener("scroll", handleScroll)
-        handleScroll() // Initial calculation
+        handleScroll()
 
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
@@ -142,6 +142,30 @@ const GalleryImage: React.FC<GalleryImageProps> = ({ image, index }) => {
                             {image.title}
                         </h3>
                     </div>
+
+                    {/* Admin Actions */}
+                    {isAdmin && (
+                        <div className="absolute top-4 right-4 flex space-x-2">
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    onEdit?.(image.id, image.title)
+                                }}
+                                className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                            >
+                                <Edit2 className="w-4 h-4 text-white" />
+                            </button>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    onDelete?.(image.id)
+                                }}
+                                className="p-2 bg-red-500/80 backdrop-blur-sm rounded-full hover:bg-red-500 transition-colors"
+                            >
+                                <Trash2 className="w-4 h-4 text-white" />
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>
@@ -150,14 +174,93 @@ const GalleryImage: React.FC<GalleryImageProps> = ({ image, index }) => {
 
 const GalleryPage: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState("All")
-    const [lightboxImage, setLightboxImage] = useState<typeof galleryImages[0] | null>(null)
+    const [lightboxImage, setLightboxImage] = useState<GalleryImageType | null>(null)
+    const [isAdmin, setIsAdmin] = useState(false)
+    const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    const [editingImage, setEditingImage] = useState<{ id: string; title: string } | null>(null)
+    const [galleryImages, setGalleryImages] = useState<GalleryImageType[]>(staticGalleryImages)
+
+    // Upload form state
+    const [uploadFile, setUploadFile] = useState<File | null>(null)
+    const [uploadTitle, setUploadTitle] = useState("")
+    const [uploadCategory, setUploadCategory] = useState("College")
+    const [isUploading, setIsUploading] = useState(false)
+    const [uploadSuccess, setUploadSuccess] = useState(false)
 
     const categories = ["All", "College", "Conference", "Clinical", "Research"]
+
+    useEffect(() => {
+        setIsAdmin(authService.isAdmin())
+    }, [])
 
     const filteredImages =
         selectedCategory === "All"
             ? galleryImages
             : galleryImages.filter((img) => img.category === selectedCategory)
+
+    const handleEdit = (id: string, title: string) => {
+        setEditingImage({ id, title })
+        setIsEditModalOpen(true)
+    }
+
+    const handleDelete = async (id: string) => {
+        if (!confirm("Are you sure you want to delete this image?")) return
+
+        try {
+            // For static images, just remove from state
+            setGalleryImages((prev) => prev.filter((img) => img.id !== id))
+            // TODO: Call memoryApi.delete(id) for dynamic images
+        } catch (error) {
+            console.error("Failed to delete:", error)
+        }
+    }
+
+    const handleUpload = async () => {
+        if (!uploadFile || !uploadTitle) return
+
+        setIsUploading(true)
+        try {
+            const formData = new FormData()
+            formData.append("image", uploadFile)
+            formData.append("caption", uploadTitle)
+            formData.append("category", uploadCategory)
+
+            // For now, add to local state
+            const newImage: GalleryImageType = {
+                id: `upload-${Date.now()}`,
+                url: URL.createObjectURL(uploadFile),
+                title: uploadTitle,
+                category: uploadCategory,
+            }
+            setGalleryImages((prev) => [newImage, ...prev])
+            setUploadSuccess(true)
+
+            setTimeout(() => {
+                setIsUploadModalOpen(false)
+                setUploadFile(null)
+                setUploadTitle("")
+                setUploadCategory("College")
+                setUploadSuccess(false)
+            }, 1500)
+        } catch (error) {
+            console.error("Upload failed:", error)
+        } finally {
+            setIsUploading(false)
+        }
+    }
+
+    const handleUpdateCaption = async () => {
+        if (!editingImage) return
+
+        setGalleryImages((prev) =>
+            prev.map((img) =>
+                img.id === editingImage.id ? { ...img, title: editingImage.title } : img
+            )
+        )
+        setIsEditModalOpen(false)
+        setEditingImage(null)
+    }
 
     return (
         <Layout title="Gallery">
@@ -241,7 +344,13 @@ const GalleryPage: React.FC = () => {
                                 onClick={() => setLightboxImage(image)}
                                 className="cursor-pointer"
                             >
-                                <GalleryImage image={image} index={index} />
+                                <GalleryImage
+                                    image={image}
+                                    index={index}
+                                    isAdmin={isAdmin}
+                                    onEdit={handleEdit}
+                                    onDelete={handleDelete}
+                                />
                             </motion.div>
                         ))}
                     </motion.div>
@@ -264,33 +373,38 @@ const GalleryPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Admin Upload Section - Only visible in admin mode */}
-            <section className="section-spacing bg-gradient-to-br from-primary-deep to-secondary-deep text-white">
-                <div className="container-custom">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center max-w-2xl mx-auto"
-                    >
-                        <Upload className="w-16 h-16 mx-auto mb-6" />
-                        <h2 className="font-display text-4xl font-semibold mb-4">
-                            Admin: Upload Images
-                        </h2>
-                        <p className="text-white/80 mb-8">
-                            This section is only visible to administrators. Upload and manage
-                            gallery images here.
-                        </p>
-                        <Button variant="secondary" size="lg">
-                            <Upload className="w-5 h-5 mr-2" />
-                            Upload New Images
-                        </Button>
-                        <p className="text-sm text-white/60 mt-4">
-                            Supported formats: JPG, PNG, WebP (max 5MB)
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            {/* Admin Upload Section - Only visible to admin */}
+            {isAdmin && (
+                <section className="section-spacing bg-gradient-to-br from-primary-deep to-secondary-deep text-white">
+                    <div className="container-custom">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center max-w-2xl mx-auto"
+                        >
+                            <Upload className="w-16 h-16 mx-auto mb-6" />
+                            <h2 className="font-display text-4xl font-semibold mb-4">
+                                Upload New Memory
+                            </h2>
+                            <p className="text-white/80 mb-8">
+                                Add new images to your gallery collection
+                            </p>
+                            <Button
+                                variant="secondary"
+                                size="lg"
+                                onClick={() => setIsUploadModalOpen(true)}
+                            >
+                                <Upload className="w-5 h-5 mr-2" />
+                                Upload New Images
+                            </Button>
+                            <p className="text-sm text-white/60 mt-4">
+                                Supported formats: JPG, PNG, WebP (max 5MB)
+                            </p>
+                        </motion.div>
+                    </div>
+                </section>
+            )}
 
             {/* Lightbox */}
             {lightboxImage && (
@@ -363,6 +477,190 @@ const GalleryPage: React.FC = () => {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Upload Modal */}
+            <AnimatePresence>
+                {isUploadModalOpen && (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsUploadModalOpen(false)}
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        >
+                            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="font-display text-2xl font-semibold text-neutral-text">
+                                        Upload New Memory
+                                    </h2>
+                                    <button
+                                        onClick={() => setIsUploadModalOpen(false)}
+                                        className="p-2 hover:bg-neutral-offWhite rounded-full"
+                                    >
+                                        <X className="w-5 h-5 text-neutral-muted" />
+                                    </button>
+                                </div>
+
+                                {uploadSuccess ? (
+                                    <div className="text-center py-8">
+                                        <Check className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                                        <h3 className="text-lg font-semibold text-neutral-text">
+                                            Upload Successful!
+                                        </h3>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-4">
+                                        {/* File Input */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-neutral-text mb-2">
+                                                Image
+                                            </label>
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
+                                                className="w-full p-3 border border-neutral-border rounded-xl"
+                                            />
+                                            {uploadFile && (
+                                                <img
+                                                    src={URL.createObjectURL(uploadFile)}
+                                                    alt="Preview"
+                                                    className="mt-2 w-full h-32 object-cover rounded-xl"
+                                                />
+                                            )}
+                                        </div>
+
+                                        {/* Title */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-neutral-text mb-2">
+                                                Title
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={uploadTitle}
+                                                onChange={(e) => setUploadTitle(e.target.value)}
+                                                placeholder="Enter image title"
+                                                className="w-full p-3 border border-neutral-border rounded-xl focus:border-primary-deep outline-none"
+                                            />
+                                        </div>
+
+                                        {/* Category */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-neutral-text mb-2">
+                                                Category
+                                            </label>
+                                            <select
+                                                value={uploadCategory}
+                                                onChange={(e) => setUploadCategory(e.target.value)}
+                                                className="w-full p-3 border border-neutral-border rounded-xl focus:border-primary-deep outline-none"
+                                            >
+                                                <option value="College">College</option>
+                                                <option value="Conference">Conference</option>
+                                                <option value="Clinical">Clinical</option>
+                                                <option value="Research">Research</option>
+                                            </select>
+                                        </div>
+
+                                        <Button
+                                            variant="primary"
+                                            className="w-full"
+                                            onClick={handleUpload}
+                                            disabled={isUploading || !uploadFile || !uploadTitle}
+                                        >
+                                            {isUploading ? (
+                                                <>
+                                                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                                    Uploading...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Upload className="w-5 h-5 mr-2" />
+                                                    Upload Image
+                                                </>
+                                            )}
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+
+            {/* Edit Modal */}
+            <AnimatePresence>
+                {isEditModalOpen && editingImage && (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsEditModalOpen(false)}
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        >
+                            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="font-display text-2xl font-semibold text-neutral-text">
+                                        Edit Caption
+                                    </h2>
+                                    <button
+                                        onClick={() => setIsEditModalOpen(false)}
+                                        className="p-2 hover:bg-neutral-offWhite rounded-full"
+                                    >
+                                        <X className="w-5 h-5 text-neutral-muted" />
+                                    </button>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-neutral-text mb-2">
+                                            Title
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={editingImage.title}
+                                            onChange={(e) =>
+                                                setEditingImage({ ...editingImage, title: e.target.value })
+                                            }
+                                            className="w-full p-3 border border-neutral-border rounded-xl focus:border-primary-deep outline-none"
+                                        />
+                                    </div>
+
+                                    <div className="flex space-x-3">
+                                        <Button
+                                            variant="outline"
+                                            className="flex-1"
+                                            onClick={() => setIsEditModalOpen(false)}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            variant="primary"
+                                            className="flex-1"
+                                            onClick={handleUpdateCaption}
+                                        >
+                                            Save Changes
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </Layout>
     )
 }

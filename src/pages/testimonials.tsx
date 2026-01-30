@@ -5,6 +5,7 @@ import { Layout } from "@/components/layout/Layout"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
 import { ShowcaseOverlay } from "@/components/ui/ShowcaseOverlay"
+import { authService } from "@/services/auth"
 import { ANIMATION_VARIANTS } from "@/utils/constants"
 import { testimonials, Testimonial } from "@/data/testimonials"
 import ahaImg from "../images/American Heart Association.png"
@@ -132,15 +133,21 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
 const TestimonialsPage: React.FC = () => {
     const [selectedRole, setSelectedRole] = useState<string>("All")
-    const [isAdmin] = useState(false) // Toggle this for admin view
+    const [isAdmin, setIsAdmin] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
+    const [testimonialsList, setTestimonialsList] = useState(testimonials)
 
     const roles = ["All", "Patient", "Student", "Teacher", "Colleague"]
 
+    // Check admin status on mount
+    useEffect(() => {
+        setIsAdmin(authService.isAdmin())
+    }, [])
+
     const filteredTestimonials =
         selectedRole === "All"
-            ? testimonials
-            : testimonials.filter((t) => t.role === selectedRole)
+            ? testimonialsList
+            : testimonialsList.filter((t) => t.role === selectedRole)
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [direction, setDirection] = useState(0) // 1 for next, -1 for prev
@@ -173,12 +180,15 @@ const TestimonialsPage: React.FC = () => {
 
     const handleEdit = (id: number) => {
         console.log("Edit testimonial:", id)
-        // Implement edit logic
+        // TODO: Implement edit modal
+        alert("Edit functionality - connect to backend")
     }
 
     const handleDelete = (id: number) => {
-        console.log("Delete testimonial:", id)
-        // Implement delete logic
+        if (!confirm("Are you sure you want to delete this testimonial?")) return
+        // Remove from local state
+        setTestimonialsList((prev) => prev.filter((t) => t.id !== id))
+        // TODO: Call API to delete
     }
 
     const variants = {

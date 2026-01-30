@@ -8,6 +8,7 @@ interface CardProps {
     hover?: boolean
     glass?: boolean
     gradient?: boolean
+    onClick?: () => void
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -16,6 +17,7 @@ export const Card: React.FC<CardProps> = ({
     hover = false,
     glass = false,
     gradient = false,
+    onClick,
 }) => {
     const baseStyles = "rounded-xl p-6 transition-all duration-300"
 
@@ -36,13 +38,14 @@ export const Card: React.FC<CardProps> = ({
                 className={conditionalStyles}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
+                onClick={onClick}
             >
                 {children}
             </motion.div>
         )
     }
 
-    return <div className={conditionalStyles}>{children}</div>
+    return <div className={conditionalStyles} onClick={onClick}>{children}</div>
 }
 
 interface CardHeaderProps {

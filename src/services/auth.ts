@@ -14,90 +14,54 @@ interface AuthUser {
 }
 
 interface AuthResponse {
-    user: AuthUser
-    token: string
-    expiresIn: number
+    success: boolean
+    data?: {
+        user: AuthUser
+    }
+    error?: string
 }
 
-// Dummy backend URL - replace with actual Rust backend
-const API_URL = process.env.GATSBY_API_URL || "http://localhost:8080"
+import { authApi } from "./api"
 
 class AuthService {
-    private readonly TOKEN_KEY = "vc_auth_token"
     private readonly USER_KEY = "vc_user"
 
     /**
      * Login with email and password
      */
-    async login(credentials: LoginCredentials): Promise<AuthResponse> {
+    async login(credentials: LoginCredentials): Promise<AuthUser> {
         try {
-            // TODO: Replace with actual API call to Rust backend
-            // const response = await fetch(`${API_URL}/api/auth/login`, {
-            //   method: "POST",
-            //   headers: { "Content-Type": "application/json" },
-            //   body: JSON.stringify(credentials),
-            // })
+            const response = await authApi.login(credentials.email, credentials.password) as AuthResponse
 
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-
-            // Dummy authentication (REMOVE IN PRODUCTION)
-            if (credentials.email === "admin@virtualchamber.com" && credentials.password === "admin123") {
-                const authResponse: AuthResponse = {
-                    user: {
-                        id: "1",
-                        email: credentials.email,
-                        name: "Dr. Admin",
-                        role: "admin",
-                    },
-                    token: "dummy_jwt_token_" + Date.now(),
-                    expiresIn: 3600, // 1 hour
-                }
-
-                // Store in localStorage
-                this.setToken(authResponse.token)
-                this.setUser(authResponse.user)
-
-                return authResponse
+            if (response.success && response.data?.user) {
+                const user = response.data.user
+                this.setUser(user)
+                return user
             } else {
-                throw new Error("Invalid credentials")
+                throw new Error(response.error || "Invalid credentials")
             }
         } catch (error) {
-            throw new Error("Login failed: " + (error as Error).message)
+            throw new Error((error as Error).message || "Login failed")
         }
     }
 
     /**
      * Logout and clear session
      */
-    logout(): void {
-        if (typeof window !== "undefined") {
-            localStorage.removeItem(this.TOKEN_KEY)
-            localStorage.removeItem(this.USER_KEY)
+    async logout(): Promise<void> {
+        try {
+            await authApi.logout()
+        } catch (error) {
+            console.error("Logout error:", error)
+        } finally {
+            if (typeof window !== "undefined") {
+                localStorage.removeItem(this.USER_KEY)
+            }
         }
     }
 
     /**
-     * Get current authentication token
-     */
-    getToken(): string | null {
-        if (typeof window !== "undefined") {
-            return localStorage.getItem(this.TOKEN_KEY)
-        }
-        return null
-    }
-
-    /**
-     * Set authentication token
-     */
-    setToken(token: string): void {
-        if (typeof window !== "undefined") {
-            localStorage.setItem(this.TOKEN_KEY, token)
-        }
-    }
-
-    /**
-     * Get current user
+     * Get current authenticated user from local storage
      */
     getUser(): AuthUser | null {
         if (typeof window !== "undefined") {
@@ -108,7 +72,7 @@ class AuthService {
     }
 
     /**
-     * Set current user
+     * Set current user in local storage
      */
     setUser(user: AuthUser): void {
         if (typeof window !== "undefined") {
@@ -117,10 +81,10 @@ class AuthService {
     }
 
     /**
-     * Check if user is authenticated
+     * Check if user is authenticated (using local user object as proxy)
      */
     isAuthenticated(): boolean {
-        return !!this.getToken()
+        return !!this.getUser()
     }
 
     /**
@@ -132,69 +96,49 @@ class AuthService {
     }
 
     /**
-     * Verify token with backend
+     * Sync user data from backend
      */
-    async verifyToken(): Promise<boolean> {
-        const token = this.getToken()
-        if (!token) return false
-
+    async syncUser(): Promise<AuthUser | null> {
         try {
-            // TODO: Replace with actual API call
-            // const response = await fetch(`${API_URL}/api/auth/verify`, {
-            //   headers: { Authorization: `Bearer ${token}` },
-            // })
-            // return response.ok
-
-            // Dummy verification
-            return true
-        } catch (error) {
-            return false
-        }
-    }
-
-    /**
-     * Refresh authentication token
-     */
-    async refreshToken(): Promise<string | null> {
-        const token = this.getToken()
-        if (!token) return null
-
-        try {
-            // TODO: Replace with actual API call
-            // const response = await fetch(`${API_URL}/api/auth/refresh`, {
-            //   method: "POST",
-            //   headers: { Authorization: `Bearer ${token}` },
-            // })
-            // const data = await response.json()
-            // this.setToken(data.token)
-            // return data.token
-
-            // Dummy refresh
-            return token
+            const response = await authApi.getProfile() as AuthResponse
+            if (response.success && response.data?.user) {
+                this.setUser(response.data.user)
+                return response.data.user
+            }
+            return null
         } catch (error) {
             return null
         }
     }
 
     /**
-     * Request password reset
+     * Verify session with backend
      */
-    async requestPasswordReset(email: string): Promise<boolean> {
+    async verifyToken(): Promise<boolean> {
         try {
-            // TODO: Replace with actual API call
-            // await fetch(`${API_URL}/api/auth/reset-password`, {
-            //   method: "POST",
-            //   headers: { "Content-Type": "application/json" },
-            //   body: JSON.stringify({ email }),
-            // })
-
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-            return true
+            const response = await authApi.verify() as AuthResponse
+            if (response.success && response.data?.user) {
+                this.setUser(response.data.user)
+                return true
+            }
+            return false
         } catch (error) {
             return false
         }
     }
+
+    /**
+     * Refresh authentication session
+     */
+    async refreshToken(): Promise<boolean> {
+        try {
+            const response = await authApi.refreshToken() as AuthResponse
+            return response.success
+        } catch (error) {
+            return false
+        }
+    }
+
 }
 
 // Export singleton instance

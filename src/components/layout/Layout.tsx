@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import { Navbar } from "@/components/layout/Navbar/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import TNLogoOverlay from "@/components/ui/logoOverlay"
+import { AppointmentModal } from "@/components/appointments/AppointmentModal"
 import { SITE_CONFIG } from "@/utils/constants"
 import "@/styles/globals.css"
 
@@ -12,6 +13,8 @@ interface LayoutProps {
     description?: string
     noFooter?: boolean
 }
+
+import { authService } from "@/services/auth"
 
 export const Layout: React.FC<LayoutProps> = ({
     children,
@@ -26,6 +29,9 @@ export const Layout: React.FC<LayoutProps> = ({
         if (isHome) {
             setShowOverlay(true)
         }
+
+        // Verify session on mount
+        authService.verifyToken()
     }, [])
 
     const pageTitle = title
@@ -61,6 +67,8 @@ export const Layout: React.FC<LayoutProps> = ({
                 <main className="flex-1">{children}</main>
                 {!noFooter && <Footer />}
             </div>
+
+            <AppointmentModal />
         </div>
     )
 }

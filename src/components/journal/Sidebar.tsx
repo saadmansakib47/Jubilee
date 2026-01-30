@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from "react"
+import { Link, navigate } from "gatsby"
 import { motion, AnimatePresence } from "framer-motion"
 import {
     BookOpen,
@@ -9,7 +9,10 @@ import {
     ChevronLeft,
     ChevronRight,
     Home,
+    Plus,
+    Settings,
 } from "lucide-react"
+import { authService } from "@/services/auth"
 import { cn } from "@/utils/cn"
 
 interface SidebarLink {
@@ -61,6 +64,11 @@ export const JournalSidebar: React.FC<JournalSidebarProps> = ({
     defaultOpen = true,
 }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen)
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    useEffect(() => {
+        setIsAdmin(authService.isAdmin())
+    }, [])
 
     return (
         <>
@@ -220,20 +228,30 @@ export const JournalSidebar: React.FC<JournalSidebarProps> = ({
                                 </div>
                             </div>
 
-                            {/* Admin Actions (visible only in admin mode) */}
-                            <div className="pt-6 border-t border-neutral-border">
-                                <h3 className="text-sm font-semibold text-neutral-text mb-4">
-                                    Quick Actions
-                                </h3>
-                                <div className="space-y-2">
-                                    <button className="w-full px-4 py-2 bg-primary-deep text-white rounded-lg text-sm font-medium hover:bg-secondary-deep transition-colors">
-                                        + New Post
-                                    </button>
-                                    <button className="w-full px-4 py-2 border border-neutral-border text-neutral-text rounded-lg text-sm font-medium hover:border-primary-deep hover:text-primary-deep transition-colors">
-                                        Manage Content
-                                    </button>
+                            {/* Admin Actions (visible only to admin) */}
+                            {isAdmin && (
+                                <div className="pt-6 border-t border-neutral-border">
+                                    <h3 className="text-sm font-semibold text-neutral-text mb-4">
+                                        Admin Actions
+                                    </h3>
+                                    <div className="space-y-2">
+                                        <button
+                                            onClick={() => alert("New Post modal - connect to backend")}
+                                            className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-primary-deep text-white rounded-lg text-sm font-medium hover:bg-secondary-deep transition-colors"
+                                        >
+                                            <Plus className="w-4 h-4" />
+                                            <span>New Post</span>
+                                        </button>
+                                        <button
+                                            onClick={() => navigate("/admin/dashboard")}
+                                            className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-neutral-border text-neutral-text rounded-lg text-sm font-medium hover:border-primary-deep hover:text-primary-deep transition-colors"
+                                        >
+                                            <Settings className="w-4 h-4" />
+                                            <span>Manage Content</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </motion.aside>
                 )}
